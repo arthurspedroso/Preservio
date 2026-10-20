@@ -1,0 +1,10 @@
+{
+  "home": {
+    "title": "Preservio"
+  },
+  "systemStatus": {
+    "title": "Status da API",
+    "checking": "Verificando...",
+    "unreachable": "API inacessível"
+  }
+}

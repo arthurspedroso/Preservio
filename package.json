@@ -1,0 +1,22 @@
+{
+  "name": "preservio",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n back,front -c blue,magenta \"npm run start:dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspaces --if-present",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.5"
+  }
+}
