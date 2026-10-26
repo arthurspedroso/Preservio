@@ -1,8 +1,10 @@
 import { createParamDecorator, type ExecutionContext } from '@nestjs/common';
+import type { UserRole } from '@modules/core/domain/enums/user-role.enum';
 import type { Request } from 'express';
 
 export interface AuthenticatedUser {
   userId: string;
+  role: UserRole;
 }
 
 export type AuthenticatedRequest = Request & { user?: AuthenticatedUser };

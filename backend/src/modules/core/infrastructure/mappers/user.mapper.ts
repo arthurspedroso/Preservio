@@ -1,4 +1,5 @@
 import { User } from '../../domain/entities/user.entity';
+import { UserRole } from '../../domain/enums/user-role.enum';
 import { UserOrmEntity } from '../database/orm-entities/user.orm-entity';
 
 export class UserMapper {
@@ -8,6 +9,7 @@ export class UserMapper {
       name: record.name,
       email: record.email,
       passwordHash: record.passwordHash,
+      role: record.role as UserRole,
     });
   }
 
@@ -17,6 +19,7 @@ export class UserMapper {
     entity.name = user.name;
     entity.email = user.email;
     entity.passwordHash = user.passwordHash;
+    entity.role = user.role;
     return entity;
   }
 }

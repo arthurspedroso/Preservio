@@ -7,13 +7,13 @@ export class JwtTokenService implements TokenService {
   constructor(private readonly jwt: JwtService) {}
 
   sign(payload: TokenPayload): Promise<string> {
-    return this.jwt.signAsync({ sub: payload.sub });
+    return this.jwt.signAsync({ sub: payload.sub, role: payload.role });
   }
 
   async verify(token: string): Promise<TokenPayload | null> {
     try {
-      const { sub } = await this.jwt.verifyAsync<TokenPayload>(token);
-      return { sub };
+      const { sub, role } = await this.jwt.verifyAsync<TokenPayload>(token);
+      return { sub, role };
     } catch {
       return null;
     }

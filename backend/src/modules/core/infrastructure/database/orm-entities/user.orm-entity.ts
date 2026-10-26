@@ -12,4 +12,7 @@ export class UserOrmEntity extends BaseOrmEntity {
 
   @Column({ type: 'varchar', length: 100, name: 'password_hash' })
   passwordHash!: string;
+
+  @Column({ type: 'varchar', length: 20, default: 'citizen' })
+  role!: string;
 }

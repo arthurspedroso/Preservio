@@ -1,5 +1,8 @@
+import type { UserRole } from '../../domain/enums/user-role.enum';
+
 export interface TokenPayload {
   sub: string;
+  role: UserRole;
 }
 
 export interface TokenService {

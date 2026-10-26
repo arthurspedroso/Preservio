@@ -30,7 +30,7 @@ export class JwtAuthGuard implements CanActivate {
       throw new UnauthorizedException('Token inválido ou expirado');
     }
 
-    request.user = { userId: payload.sub };
+    request.user = { userId: payload.sub, role: payload.role };
     return true;
   }
 }

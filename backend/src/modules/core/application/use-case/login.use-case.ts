@@ -1,3 +1,4 @@
+import { UserRole } from '@modules/core/domain/enums/user-role.enum';
 import { UserRepository } from '@modules/core/domain/repositories/user.repository';
 import { Inject, Injectable } from '@nestjs/common';
 import { PasswordHasher } from '../ports/password-hasher.port';
@@ -18,7 +19,7 @@ export class LoginUseCase {
     @Inject(TokenService) private readonly tokenService: TokenService,
   ) {}
 
-  async execute(command: LoginCommand): Promise<{ accessToken: string }> {
+  async execute(command: LoginCommand): Promise<{ accessToken: string; role: UserRole }> {
     const user = await this.userRepository.findByEmail(command.email);
     if (!user) {
       throw new UnauthorizedException('Email ou senha inválidos');
@@ -29,7 +30,7 @@ export class LoginUseCase {
       throw new UnauthorizedException('Email ou senha inválidos');
     }
 
-    const accessToken = await this.tokenService.sign({ sub: user.id });
-    return { accessToken };
+    const accessToken = await this.tokenService.sign({ sub: user.id, role: user.role });
+    return { accessToken, role: user.role };
   }
 }

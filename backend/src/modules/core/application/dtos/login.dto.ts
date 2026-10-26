@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, MaxLength, IsString, MinLength } from 'class-validator';
 import { Transform } from 'class-transformer';
+import { UserRole } from '../../domain/enums/user-role.enum';
 
 export class LoginDto {
   @ApiProperty({ example: 'joao@preservio.dev' })
@@ -19,4 +20,7 @@ export class LoginDto {
 export class LoginResponseDto {
   @ApiProperty({ example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' })
   accessToken!: string;
+
+  @ApiProperty({ enum: UserRole, example: UserRole.Citizen })
+  role!: UserRole;
 }

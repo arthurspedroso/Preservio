@@ -21,6 +21,7 @@ export class CreateUsers1792849476264 implements MigrationInterface {
           { name: 'name', type: 'varchar', length: '100' },
           { name: 'email', type: 'varchar', length: '255' },
           { name: 'password_hash', type: 'varchar', length: '100' },
+          { name: 'role', type: 'varchar', length: '20', default: "'citizen'" },
         ],
         indices: [
           {

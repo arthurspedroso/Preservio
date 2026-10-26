@@ -1,6 +1,7 @@
 import type { ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { UnauthorizedException } from '../../application/exceptions/application.exceptions';
+import { UserRole } from '../../domain/enums/user-role.enum';
 import type { TokenService } from '../../application/ports/token-service.port';
 import { JwtAuthGuard } from './jwt-auth.guard';
 
@@ -19,7 +20,9 @@ function createContext(authorization?: string) {
 describe('JwtAuthGuard', () => {
   const tokens: TokenService = {
     sign: jest.fn(),
-    verify: jest.fn(async (token: string) => (token === 'valido' ? { sub: 'user-1' } : null)),
+    verify: jest.fn(async (token: string) =>
+      token === 'valido' ? { sub: 'user-1', role: UserRole.Citizen } : null,
+    ),
   };
   const reflector = new Reflector();
   const guard = new JwtAuthGuard(reflector, tokens);
@@ -46,6 +49,6 @@ describe('JwtAuthGuard', () => {
     const { context, request } = createContext('Bearer valido');
 
     await expect(guard.canActivate(context)).resolves.toBe(true);
-    expect(request.user).toEqual({ userId: 'user-1' });
+    expect(request.user).toEqual({ userId: 'user-1', role: UserRole.Citizen });
   });
 });
