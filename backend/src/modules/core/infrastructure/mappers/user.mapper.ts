@@ -3,7 +3,12 @@ import { UserOrmEntity } from '../database/orm-entities/user.orm-entity';
 
 export class UserMapper {
   static toDomain(record: UserOrmEntity): User {
-    return new User(record.id, record.name, record.email, record.passwordHash);
+    return User.reconstitute({
+      id: record.id,
+      name: record.name,
+      email: record.email,
+      passwordHash: record.passwordHash,
+    });
   }
 
   static toOrmEntity(user: User): UserOrmEntity {
