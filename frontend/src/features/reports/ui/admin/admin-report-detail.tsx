@@ -1,18 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, FileX2, ShieldCheck } from 'lucide-react';
+import { FileX2, ShieldCheck } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { ApiError } from '@/shared/infrastructure/http-client';
 import { formatDateTime } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
 import { EmptyState } from '@/shared/ui/empty-state';
 import { ErrorState } from '@/shared/ui/error-state';
+import { Panel } from '@/shared/ui/panel';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { useReportQuery } from '../../application/use-reports';
 import { ReportDetails } from '../report-details';
+import { ReportBackLink, ReportHeader } from '../report-header';
 import { ReportTimeline } from '../report-timeline';
-import { StatusBadge } from '../status-badge';
 import { StatusStepper } from '../status-stepper';
 import { IdentityCard } from './identity-card';
 import { StatusActions } from './status-actions';
@@ -39,13 +40,7 @@ export function AdminReportDetail({ protocol }: { protocol: string }) {
 
   return (
     <>
-      <Link
-        href="/admin"
-        className="mb-5 inline-flex items-center gap-1.5 rounded text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden />
-        {t('back')}
-      </Link>
+      <ReportBackLink href="/admin" label={t('back')} />
 
       {isPending || !report ? (
         <div className="space-y-4" aria-busy="true">
@@ -55,17 +50,11 @@ export function AdminReportDetail({ protocol }: { protocol: string }) {
         </div>
       ) : (
         <div className="space-y-6">
-          <header className="space-y-3">
-            <p className="font-mono text-sm text-muted-foreground">{report.protocol}</p>
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h1 className="max-w-3xl text-3xl font-semibold sm:text-4xl">{report.title}</h1>
-              <StatusBadge status={report.status} className="mt-1.5 px-3 py-1 text-sm" />
-            </div>
-          </header>
+          <ReportHeader report={report} />
 
           <StatusStepper status={report.status} />
 
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_23rem] lg:items-start">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-start">
             <div className="space-y-5">
               <ReportDetails report={report} />
               <ReportTimeline report={report} />
@@ -74,13 +63,9 @@ export function AdminReportDetail({ protocol }: { protocol: string }) {
             <div className="space-y-5">
               <IdentityCard report={report} />
               <StatusActions report={report} />
-              <section className="rounded-xl border bg-card p-5 shadow-soft">
-                <h2 className="flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                  <ShieldCheck className="size-4" aria-hidden />
-                  {t('accessLog')}
-                </h2>
+              <Panel title={t('accessLog')} icon={ShieldCheck}>
                 {report.accessLog?.length ? (
-                  <ul className="mt-3 space-y-2 text-sm">
+                  <ul className="space-y-2 text-sm">
                     {report.accessLog.map((entry) => (
                       <li key={entry.id}>
                         {t('accessLogEntry', { name: entry.adminName })}
@@ -91,9 +76,9 @@ export function AdminReportDetail({ protocol }: { protocol: string }) {
                     ))}
                   </ul>
                 ) : (
-                  <p className="mt-3 text-sm text-muted-foreground">{t('accessLogEmpty')}</p>
+                  <p className="text-sm text-muted-foreground">{t('accessLogEmpty')}</p>
                 )}
-              </section>
+              </Panel>
             </div>
           </div>
         </div>

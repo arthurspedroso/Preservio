@@ -2,6 +2,7 @@
 
 import { Search, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { FormField } from '@/shared/ui/form-field';
 import { Input } from '@/shared/ui/input';
@@ -37,11 +38,19 @@ export function ReportFilters({
 
   return (
     <section aria-label={t('filters.label')} className="rounded-xl border bg-card p-4 shadow-soft">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
+      {/* As colunas seguem a quantidade de campos: nada fica sozinho na linha nem sobra buraco */}
+      <div
+        className={cn(
+          'grid gap-4',
+          showPeriod
+            ? 'sm:grid-cols-3 xl:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]'
+            : 'sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(2,minmax(0,1fr))]',
+        )}
+      >
         <FormField
           id={`${idPrefix}-search`}
           label={t('filters.search')}
-          className="sm:col-span-2 lg:col-span-1"
+          className={cn('col-span-full', showPeriod ? 'xl:col-span-1' : 'lg:col-span-1')}
         >
           {(field) => (
             <div className="relative">

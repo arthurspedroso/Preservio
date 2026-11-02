@@ -8,6 +8,7 @@ import { Alert } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
 import { ConfirmDialog } from '@/shared/ui/confirm-dialog';
 import { PageHeader } from '@/shared/ui/page-header';
+import { DataItem, Panel } from '@/shared/ui/panel';
 import { useSessionStore } from '../application/session-store';
 import { useLogout } from '../application/use-logout';
 
@@ -42,17 +43,13 @@ export function ProfileView() {
         description={isAdmin ? t('adminDescription') : t('description')}
       />
 
-      <div className="max-w-2xl space-y-6">
-        <section className="rounded-xl border bg-card p-6 shadow-soft">
-          <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            {t('account')}
-          </h2>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start">
+        <Panel title={t('account')}>
+          <dl className="grid gap-4 sm:grid-cols-2">
             {rows.map(([label, value]) => (
-              <div key={label} className="space-y-0.5">
-                <dt className="text-xs text-muted-foreground">{label}</dt>
-                <dd className="text-sm font-medium">{value}</dd>
-              </div>
+              <DataItem key={label} label={label}>
+                <span className="font-medium">{value}</span>
+              </DataItem>
             ))}
           </dl>
           <p className="mt-6 rounded-lg bg-muted/60 p-3 text-xs leading-relaxed text-muted-foreground">
@@ -62,7 +59,7 @@ export function ProfileView() {
             <LogOut aria-hidden />
             {t('logout')}
           </Button>
-        </section>
+        </Panel>
 
         <Alert variant="warning" title={t('demoTitle')}>
           <p>{t('demoText')}</p>

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { LayoutDashboard } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { GuestActions } from '@/shared/layouts/site-header';
+import { GuestActions, overlaySolidButtonClassName } from '@/shared/layouts/site-header';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { SheetClose } from '@/shared/ui/sheet';
@@ -17,12 +17,16 @@ export function AccountActions({ mobile = false }: { mobile?: boolean }) {
 
   // Reserva o espaço até ler a sessão, para os botões não "piscarem"
   if (!hydrated) {
-    return <div className={cn(mobile ? 'h-11' : 'h-8 w-48')} aria-hidden />;
+    return <div className={cn(mobile ? 'h-11' : 'h-9 w-48')} aria-hidden />;
   }
   if (!user) return <GuestActions mobile={mobile} />;
 
   const button = (
-    <Button asChild size={mobile ? 'lg' : 'sm'}>
+    <Button
+      asChild
+      size={mobile ? 'lg' : 'sm'}
+      className={mobile ? undefined : overlaySolidButtonClassName}
+    >
       <Link href={homeFor(user.role)}>
         <LayoutDashboard aria-hidden />
         {t('myArea')}

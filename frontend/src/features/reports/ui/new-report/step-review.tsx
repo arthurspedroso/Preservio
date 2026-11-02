@@ -7,6 +7,7 @@ import { useFormContext, useWatch } from 'react-hook-form';
 import { stateName } from '@/shared/lib/brazil-states';
 import { formatDate } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
+import { DataItem as Item, Panel } from '@/shared/ui/panel';
 import type { ReportCategory } from '../../domain/types';
 import { categoryIcons } from '../category-icons';
 import type { ReportFormValues } from './schema';
@@ -26,27 +27,19 @@ function ReviewSection({
   const t = useTranslations('reports.new.review');
 
   return (
-    <section className="rounded-xl border bg-card p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          {title}
-        </h3>
+    <Panel
+      title={title}
+      headingLevel="h3"
+      className="p-4 shadow-none sm:p-5"
+      actions={
         <Button type="button" variant="ghost" size="sm" onClick={onEdit} aria-label={editLabel}>
           <Pencil aria-hidden />
           <span aria-hidden>{t('editShort')}</span>
         </Button>
-      </div>
+      }
+    >
       {children}
-    </section>
-  );
-}
-
-function Item({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="space-y-0.5">
-      <dt className="text-xs text-muted-foreground">{label}</dt>
-      <dd className="text-sm">{children}</dd>
-    </div>
+    </Panel>
   );
 }
 

@@ -22,11 +22,11 @@ const SheetContent = forwardRef<ElementRef<typeof Dialog.Content>, SheetContentP
 
     return (
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-brand/40 backdrop-blur-[2px]" />
+        <Dialog.Overlay className="fixed inset-0 z-50 animate-fade-in bg-foreground/40" />
         <Dialog.Content
           ref={ref}
           className={cn(
-            'fixed inset-y-0 z-50 flex w-[min(20rem,85vw)] flex-col shadow-soft focus:outline-none',
+            'fixed inset-y-0 z-50 flex w-[min(20rem,85vw)] flex-col shadow-overlay focus:outline-none',
             side === 'left' ? 'left-0 border-r' : 'right-0 border-l',
             tone === 'dark'
               ? 'border-sidebar-border bg-sidebar text-sidebar-foreground'

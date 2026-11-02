@@ -136,7 +136,7 @@
       "privacyTitle": "Privacidade",
       "privacy": "Coletamos apenas os dados necessários para identificar o denunciante e analisar a ocorrência, em respeito à LGPD. Suas denúncias são visíveis apenas para você e para o órgão responsável.",
       "teamTitle": "Equipe",
-      "team": "Nathália Helen Oliveira Leite, Isadora Costa Nascimento e Arthur de Souza Pedroso.",
+      "team": ["Nathália Leite", "Arthur Pedroso", "Isadora Costa"],
       "disclaimer": "Protótipo acadêmico com dados simulados — não substitui os canais oficiais dos órgãos ambientais."
     },
     "auth": {
@@ -153,6 +153,11 @@
       },
       "newReport": "Nova denúncia",
       "newReportShort": "Nova",
+      "groups": {
+        "reports": "Denúncias",
+        "help": "Ajuda",
+        "account": "Conta"
+      },
       "openMenu": "Abrir menu",
       "account": "Menu da conta",
       "profile": "Perfil",
@@ -160,6 +165,10 @@
     },
     "admin": {
       "badge": "Ambiente de gestão",
+      "groups": {
+        "management": "Gestão",
+        "account": "Conta"
+      },
       "ribbon": "Ambiente de gestão — acesso restrito a representantes do órgão ambiental",
       "navLabel": "Área administrativa",
       "nav": {

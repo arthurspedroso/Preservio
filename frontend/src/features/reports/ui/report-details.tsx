@@ -1,30 +1,10 @@
-import { type ReactNode } from 'react';
 import { FileVideo, ImageOff } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { stateName } from '@/shared/lib/brazil-states';
 import { formatDate, formatDateTime, formatFileSize } from '@/shared/lib/format';
+import { DataItem as Item, Panel as Section } from '@/shared/ui/panel';
 import type { Report } from '../domain/types';
 import { categoryIcons } from './category-icons';
-
-function Section({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="rounded-xl border bg-card p-5 shadow-soft">
-      <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        {title}
-      </h2>
-      <div className="mt-4">{children}</div>
-    </section>
-  );
-}
-
-function Item({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="space-y-0.5">
-      <dt className="text-xs text-muted-foreground">{label}</dt>
-      <dd className="text-sm">{children}</dd>
-    </div>
-  );
-}
 
 // Dados da denúncia, iguais para o cidadão e para o administrador
 export function ReportDetails({ report }: { report: Report }) {

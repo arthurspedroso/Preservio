@@ -13,7 +13,7 @@ export function StepTips({ step }: { step: StepKey }) {
       <div className="rounded-xl border bg-secondary/50 p-5">
         <h2
           id="tips-title"
-          className="flex items-center gap-2 font-sans text-sm font-semibold tracking-normal text-secondary-foreground"
+          className="flex items-center gap-2 text-sm font-semibold text-secondary-foreground"
         >
           <Lightbulb className="size-4" aria-hidden />
           {t('title')}

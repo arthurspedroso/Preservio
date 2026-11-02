@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, MessageSquareText } from 'lucide-react';
+import { ArrowRight, CalendarDays, MapPin, MessageSquareText } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { formatDate, formatRelative } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
@@ -20,21 +20,26 @@ export function ReportCard({ report }: { report: Report }) {
         <StatusBadge status={report.status} />
       </div>
 
-      <h3 className="mt-2 text-lg font-semibold leading-snug">
+      <h3 className="mt-2 text-base font-semibold leading-snug">
         <Link href={href} className="rounded hover:underline">
           {report.title}
         </Link>
       </h3>
-      <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm text-muted-foreground">
-        <Icon className="size-3.5 shrink-0 text-primary" aria-hidden />
-        <span>{t(`categories.${report.category}.label`)}</span>
-        <span aria-hidden>·</span>
-        <span>
+      {/* Ícones em vez de "·": a linha pode quebrar sem deixar separador solto no celular */}
+      <ul className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+        <li className="inline-flex items-center gap-1.5">
+          <Icon className="size-3.5 shrink-0 text-primary" aria-hidden />
+          {t(`categories.${report.category}.label`)}
+        </li>
+        <li className="inline-flex items-center gap-1.5">
+          <MapPin className="size-3.5 shrink-0" aria-hidden />
           {report.location.city}/{report.location.state}
-        </span>
-        <span aria-hidden>·</span>
-        <span>{t('card.registered', { date: formatDate(report.createdAt) })}</span>
-      </p>
+        </li>
+        <li className="inline-flex items-center gap-1.5">
+          <CalendarDays className="size-3.5 shrink-0" aria-hidden />
+          {t('card.registered', { date: formatDate(report.createdAt) })}
+        </li>
+      </ul>
 
       <div className="mt-4">
         <StatusProgress status={report.status} />
@@ -50,7 +55,7 @@ export function ReportCard({ report }: { report: Report }) {
             </span>
           )}
         </p>
-        <Button asChild variant="outline" size="sm">
+        <Button asChild variant="outline" size="sm" className="ml-auto">
           <Link href={href}>
             {t('card.details')}
             <ArrowRight aria-hidden />

@@ -33,10 +33,7 @@ export function StepLocation() {
   return (
     <div className="space-y-8">
       <section aria-labelledby="when-title" className="space-y-4">
-        <h3
-          id="when-title"
-          className="font-sans text-base font-semibold tracking-normal text-foreground"
-        >
+        <h3 id="when-title" className="text-base font-semibold text-foreground">
           {t('whenTitle')}
         </h3>
         <FormField
@@ -79,10 +76,7 @@ export function StepLocation() {
       </section>
 
       <section aria-labelledby="where-title" className="space-y-5">
-        <h3
-          id="where-title"
-          className="font-sans text-base font-semibold tracking-normal text-foreground"
-        >
+        <h3 id="where-title" className="text-base font-semibold text-foreground">
           {t('whereTitle')}
         </h3>
 

@@ -6,7 +6,7 @@ export function DemoBanner() {
   const t = useTranslations('ui.demoBanner');
 
   return (
-    <div className="flex items-center justify-center gap-2 bg-warning/20 px-4 py-1.5 text-center text-xs font-medium text-warning-foreground">
+    <div className="flex items-center justify-center gap-2 bg-warning/15 px-4 py-1.5 text-center text-xs font-medium text-warning-foreground">
       <FlaskConical className="size-3.5 shrink-0" aria-hidden />
       {t('text')}
     </div>

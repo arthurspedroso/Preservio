@@ -5,6 +5,7 @@ export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 export { Checkbox } from './checkbox';
 export { ConfirmDialog } from './confirm-dialog';
 export { DemoNotice } from './demo-notice';
+export { DataItem, Panel } from './panel';
 export { EmptyState } from './empty-state';
 export { FormField, type FieldControlProps } from './form-field';
 export { Input } from './input';

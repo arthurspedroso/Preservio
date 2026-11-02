@@ -19,33 +19,57 @@ export function StatusStepper({ status }: { status: ReportStatus }) {
   };
 
   return (
-    <ol aria-label={t('stepper.label')} className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <ol
+      aria-label={t('stepper.label')}
+      className="grid gap-4 rounded-xl border bg-card p-4 shadow-soft sm:grid-cols-4 sm:gap-2 sm:p-5"
+    >
       {steps.map((step, index) => {
         const state = stateOf(index);
         const Icon = statusIcons[step];
         const isCurrent = index === currentIndex;
+        const rejected = isCurrent && step === 'not_upheld';
 
         return (
           <li
             key={step}
             aria-current={isCurrent ? 'step' : undefined}
-            className={cn(
-              'rounded-xl border p-3 text-sm transition-colors',
-              state === 'pending' && 'border-dashed bg-muted/50 text-muted-foreground',
-              state !== 'pending' && 'border-primary/30 bg-secondary text-secondary-foreground',
-              isCurrent && 'ring-2 ring-primary ring-offset-2 ring-offset-background',
-              isCurrent &&
-                step === 'not_upheld' &&
-                'border-destructive/30 bg-destructive/5 ring-destructive',
-            )}
+            className="flex items-center gap-3 sm:flex-col sm:items-stretch sm:gap-2.5"
           >
-            <div className="flex items-center gap-2 font-medium">
-              <Icon className="size-4 shrink-0" aria-hidden />
-              {t(`status.${step}.label`)}
+            <div className="flex items-center">
+              <span
+                className={cn(
+                  'grid size-8 shrink-0 place-items-center rounded-full',
+                  state === 'pending' && 'bg-muted text-muted-foreground',
+                  state === 'current' && 'bg-secondary text-primary ring-2 ring-primary',
+                  state === 'done' && 'bg-primary text-primary-foreground',
+                  rejected && 'bg-destructive text-destructive-foreground',
+                )}
+              >
+                <Icon className="size-4" aria-hidden />
+              </span>
+              {index < steps.length - 1 && (
+                <span
+                  className={cn(
+                    'ml-2 hidden h-0.5 flex-1 rounded-full sm:block',
+                    index < currentIndex ? 'bg-primary' : 'bg-border',
+                  )}
+                  aria-hidden
+                />
+              )}
             </div>
-            <p className="mt-1 text-xs">
-              {state === 'done' && isCurrent ? t('stepper.finished') : t(`stepper.${state}`)}
-            </p>
+            <div className="min-w-0">
+              <p
+                className={cn(
+                  'text-sm font-medium',
+                  state === 'pending' && 'text-muted-foreground',
+                )}
+              >
+                {t(`status.${step}.label`)}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {state === 'done' && isCurrent ? t('stepper.finished') : t(`stepper.${state}`)}
+              </p>
+            </div>
           </li>
         );
       })}

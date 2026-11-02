@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { ApiError } from '@/shared/infrastructure/http-client';
 import { Button } from '@/shared/ui/button';
 import { ConfirmDialog } from '@/shared/ui/confirm-dialog';
+import { Panel } from '@/shared/ui/panel';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { toast } from '@/shared/ui/toaster';
 import { useIdentityQuery, useRevealCpf } from '../../application/use-reports';
@@ -33,21 +34,15 @@ export function IdentityCard({ report }: { report: Report }) {
     });
 
   return (
-    <section className="rounded-xl border bg-card p-5 shadow-soft">
-      <h2 className="flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        <LockKeyhole className="size-4" aria-hidden />
-        {t('reporter')}
-      </h2>
-      <p className="mt-1 text-xs text-muted-foreground">{t('reporterNote')}</p>
-
+    <Panel title={t('reporter')} icon={LockKeyhole} description={t('reporterNote')}>
       {isPending || !identity ? (
-        <div className="mt-4 space-y-3" aria-busy="true">
+        <div className="space-y-3" aria-busy="true">
           <Skeleton className="h-4 w-2/3" />
           <Skeleton className="h-4 w-full" />
           <Skeleton className="h-4 w-1/2" />
         </div>
       ) : (
-        <dl className="mt-4 space-y-3 text-sm">
+        <dl className="space-y-3 text-sm">
           <div>
             <dt className="text-xs text-muted-foreground">{t('name')}</dt>
             <dd className="font-medium">{identity.name}</dd>
@@ -91,6 +86,6 @@ export function IdentityCard({ report }: { report: Report }) {
         loading={reveal.isPending}
         onConfirm={confirm}
       />
-    </section>
+    </Panel>
   );
 }

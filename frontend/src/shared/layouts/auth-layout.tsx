@@ -16,7 +16,7 @@ export function AuthLayout({ title, description, children }: AuthLayoutProps) {
   const t = useTranslations('layout.auth');
 
   return (
-    <div className="grid min-h-screen lg:grid-cols-2">
+    <div className="grid min-h-screen lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
       <SkipLink />
       {/* Painel fixo na tela enquanto o formulário rola */}
       <div className="sticky top-0 hidden h-screen lg:block">
@@ -26,27 +26,30 @@ export function AuthLayout({ title, description, children }: AuthLayoutProps) {
             alt={t('imageAlt')}
             fill
             priority
-            sizes="50vw"
+            sizes="45vw"
             placeholder="blur"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-hero-overlay" aria-hidden />
-          <p className="absolute inset-x-10 bottom-10 font-display text-3xl font-semibold leading-tight text-brand-foreground">
+          <div className="absolute inset-0 bg-hero-fade" aria-hidden />
+          <p className="absolute inset-x-10 bottom-10 font-display text-2xl font-semibold leading-snug text-brand-foreground">
             {t('quote')}
           </p>
         </div>
       </div>
 
-      <div className="flex flex-col px-4 py-8 sm:px-10">
-        <Logo />
-        <main id={MAIN_CONTENT_ID} className="flex flex-1 items-center justify-center py-10">
-          <div className="w-full max-w-sm">
-            <h1 className="text-3xl font-semibold">{title}</h1>
-            {description && <p className="mt-2 text-sm text-muted-foreground">{description}</p>}
-            <div className="mt-8">{children}</div>
+      {/* Logo no mesmo eixo do formulário */}
+      <main id={MAIN_CONTENT_ID} className="flex items-center justify-center px-4 py-10 sm:px-10">
+        <div className="w-full max-w-md">
+          <div className="mb-8 flex justify-center">
+            <Logo variant="stacked" imageClassName="h-32" />
           </div>
-        </main>
-      </div>
+          <h1 className="text-center text-2xl font-bold sm:text-3xl">{title}</h1>
+          {description && (
+            <p className="mt-2 text-center text-sm text-muted-foreground">{description}</p>
+          )}
+          <div className="mt-8">{children}</div>
+        </div>
+      </main>
     </div>
   );
 }

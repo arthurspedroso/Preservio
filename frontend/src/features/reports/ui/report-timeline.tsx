@@ -2,6 +2,7 @@ import { FilePlus2, MessageSquareText, RefreshCw, type LucideIcon } from 'lucide
 import { useTranslations } from 'next-intl';
 import { formatDateTime } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
+import { Panel } from '@/shared/ui/panel';
 import type { Report, ReportHistoryEntry } from '../domain/types';
 import { StatusBadge } from './status-badge';
 
@@ -18,12 +19,8 @@ export function ReportTimeline({ report }: { report: Report }) {
   const onlyCreated = report.history.length === 1;
 
   return (
-    <section className="rounded-xl border bg-card p-5 shadow-soft">
-      <h2 className="font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-        {t('detail.timeline')}
-      </h2>
-
-      <ol className="mt-5">
+    <Panel title={t('detail.timeline')}>
+      <ol>
         {entries.map((entry, index) => {
           const Icon = icons[entry.kind];
           const isLast = index === entries.length - 1;
@@ -80,6 +77,6 @@ export function ReportTimeline({ report }: { report: Report }) {
           {t('detail.timelineEmpty')}
         </p>
       )}
-    </section>
+    </Panel>
   );
 }

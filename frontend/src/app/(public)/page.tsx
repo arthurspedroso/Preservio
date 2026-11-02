@@ -33,17 +33,17 @@ export default function HomePage() {
           className="-z-10 object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-hero-overlay" aria-hidden />
-        <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32 lg:py-40">
+        <div className="mx-auto max-w-6xl px-4 pb-20 pt-36 sm:px-6 sm:pb-28 sm:pt-44 lg:pb-36 lg:pt-52">
           <p className="inline-flex rounded-full bg-brand-foreground/15 px-3 py-1 text-xs font-medium text-brand-foreground backdrop-blur">
             {t('hero.eyebrow')}
           </p>
-          <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.1] text-brand-foreground sm:text-6xl">
+          <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-[1.1] text-brand-foreground sm:text-5xl lg:text-6xl">
             {t('hero.title')}
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-foreground/90">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-foreground/90 sm:text-lg">
             {t('hero.description')}
           </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="inverse" size="xl">
               <Link href="/denuncias/nova">{t('hero.primaryCta')}</Link>
             </Button>
@@ -54,23 +54,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-labelledby="how-it-works" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <h2 id="how-it-works" className="text-3xl font-semibold sm:text-4xl">
-          {t('steps.title')}
-        </h2>
-        <p className="mt-3 max-w-2xl text-muted-foreground">{t('steps.description')}</p>
-        <ol className="mt-10 grid gap-5 md:grid-cols-3">
+      <section
+        aria-labelledby="how-it-works"
+        className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 id="how-it-works" className="text-2xl font-bold sm:text-3xl">
+            {t('steps.title')}
+          </h2>
+          <p className="mt-3 text-muted-foreground">{t('steps.description')}</p>
+        </div>
+        <ol className="mt-10 grid gap-4 md:grid-cols-3">
           {steps.map(({ key, icon: Icon }, index) => (
             <li key={key} className="rounded-xl border bg-card p-6 shadow-soft">
-              <div className="flex items-center gap-3">
-                <span className="grid size-11 place-items-center rounded-xl bg-secondary text-primary">
+              <div className="flex items-center justify-between">
+                <span className="grid size-10 place-items-center rounded-lg bg-secondary text-primary">
                   <Icon className="size-5" aria-hidden />
                 </span>
-                <span className="font-display text-3xl font-semibold text-primary/40" aria-hidden>
+                <span
+                  className="font-display text-sm font-semibold tabular-nums text-muted-foreground"
+                  aria-hidden
+                >
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>
-              <h3 className="mt-5 text-xl font-semibold">
+              <h3 className="mt-5 text-lg font-semibold">
                 <span className="sr-only">{t('steps.stepLabel', { n: index + 1 })} </span>
                 {t(`steps.${key}.title`)}
               </h3>
@@ -82,10 +90,10 @@ export default function HomePage() {
         </ol>
       </section>
 
-      <section aria-labelledby="participation" className="bg-secondary/60">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2">
+      <section aria-labelledby="participation" className="border-t bg-muted/60">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2">
           <div>
-            <h2 id="participation" className="text-3xl font-semibold sm:text-4xl">
+            <h2 id="participation" className="text-2xl font-bold sm:text-3xl">
               {t('participation.title')}
             </h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -95,10 +103,12 @@ export default function HomePage() {
               <Link href="/cadastro">{t('participation.cta')}</Link>
             </Button>
           </div>
-          <ul className="grid gap-4">
+          <ul className="grid gap-3">
             {pillars.map(({ key, icon: Icon }) => (
               <li key={key} className="flex gap-4 rounded-xl border bg-card p-5 shadow-soft">
-                <Icon className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-secondary text-primary">
+                  <Icon className="size-5" aria-hidden />
+                </span>
                 <div>
                   <p className="font-medium">{t(`participation.${key}.title`)}</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">

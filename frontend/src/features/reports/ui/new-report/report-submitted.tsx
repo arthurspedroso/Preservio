@@ -33,23 +33,21 @@ export function ReportSubmitted({ report }: { report: Report }) {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <div className="rounded-2xl border bg-card p-6 text-center shadow-soft sm:p-10">
-        <span className="mx-auto grid size-16 animate-pop-in place-items-center rounded-full bg-primary text-primary-foreground shadow-soft">
+      <div className="rounded-xl border bg-card p-6 text-center shadow-soft sm:p-10">
+        <span className="mx-auto grid size-16 animate-pop-in place-items-center rounded-full bg-primary text-primary-foreground">
           <Check className="size-8" strokeWidth={2.5} aria-hidden />
         </span>
         <h1
           ref={headingRef}
           tabIndex={-1}
-          className="mt-6 text-3xl font-semibold focus:outline-none"
+          className="mt-6 text-2xl font-bold focus:outline-none sm:text-3xl"
         >
           {t('title')}
         </h1>
         <p className="mt-2 text-muted-foreground">{t('description')}</p>
 
         <div className="mt-8 rounded-xl border border-dashed border-primary/40 bg-secondary/40 p-5">
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            {t('protocolLabel')}
-          </p>
+          <p className="text-xs font-medium text-muted-foreground">{t('protocolLabel')}</p>
           <div className="mt-1 flex items-center justify-center gap-2">
             <p className="font-mono text-2xl font-semibold tracking-wider text-brand sm:text-3xl">
               {report.protocol}
@@ -89,9 +87,7 @@ export function ReportSubmitted({ report }: { report: Report }) {
         </dl>
 
         <div className="mt-8 text-left">
-          <h2 className="font-sans text-sm font-semibold tracking-normal text-foreground">
-            {t('nextTitle')}
-          </h2>
+          <h2 className="text-sm font-semibold text-foreground">{t('nextTitle')}</h2>
           <ol className="mt-3 space-y-3">
             {Array.from({ length: NEXT_STEPS }, (_, i) => (
               <li key={i} className="flex gap-3 text-sm">

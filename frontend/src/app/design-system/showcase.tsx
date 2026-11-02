@@ -97,7 +97,9 @@ export function DesignSystemShowcase() {
       <Section title="Tipografia">
         <Card>
           <CardContent className="space-y-3 pt-5">
-            <p className="font-display text-5xl font-semibold text-brand">Fraunces — títulos</p>
+            <p className="font-display text-5xl font-semibold text-brand">
+              Plus Jakarta Sans — títulos
+            </p>
             <p className="font-display text-2xl font-semibold text-brand">Como funciona</p>
             <p className="text-base">
               Instrument Sans — corpo de texto. Registre possíveis irregularidades ambientais e

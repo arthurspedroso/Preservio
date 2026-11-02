@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, FileX2, Info } from 'lucide-react';
+import { FileX2, Info } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { ApiError } from '@/shared/infrastructure/http-client';
 import { Button } from '@/shared/ui/button';
@@ -10,8 +10,8 @@ import { ErrorState } from '@/shared/ui/error-state';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { useReportQuery } from '../../application/use-reports';
 import { ReportDetails } from '../report-details';
+import { ReportBackLink, ReportHeader } from '../report-header';
 import { ReportTimeline } from '../report-timeline';
-import { StatusBadge } from '../status-badge';
 import { StatusStepper } from '../status-stepper';
 
 export function CitizenReportDetail({ protocol }: { protocol: string }) {
@@ -36,13 +36,7 @@ export function CitizenReportDetail({ protocol }: { protocol: string }) {
 
   return (
     <>
-      <Link
-        href="/denuncias"
-        className="mb-5 inline-flex items-center gap-1.5 rounded text-sm font-medium text-primary hover:underline"
-      >
-        <ArrowLeft className="size-4" aria-hidden />
-        {t('back')}
-      </Link>
+      <ReportBackLink href="/denuncias" label={t('back')} />
 
       {isPending || !report ? (
         <div className="space-y-4" aria-busy="true">
@@ -52,13 +46,7 @@ export function CitizenReportDetail({ protocol }: { protocol: string }) {
         </div>
       ) : (
         <div className="space-y-6">
-          <header className="space-y-3">
-            <p className="font-mono text-sm text-muted-foreground">{report.protocol}</p>
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <h1 className="max-w-3xl text-3xl font-semibold sm:text-4xl">{report.title}</h1>
-              <StatusBadge status={report.status} className="mt-1.5 px-3 py-1 text-sm" />
-            </div>
-          </header>
+          <ReportHeader report={report} />
 
           <StatusStepper status={report.status} />
 

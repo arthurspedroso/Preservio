@@ -112,7 +112,7 @@ export function AssistantChat() {
 
       <section
         aria-label={t('title')}
-        className="overflow-hidden rounded-2xl border bg-card shadow-soft"
+        className="overflow-hidden rounded-xl border bg-card shadow-soft"
       >
         <header className="flex items-center justify-between gap-3 border-b px-5 py-3">
           <div className="flex items-center gap-3">

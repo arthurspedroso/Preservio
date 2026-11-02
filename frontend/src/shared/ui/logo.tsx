@@ -1,34 +1,41 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { Leaf } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
+import horizontalDark from '@/shared/assets/brand/logo-horizontal-dark.svg';
+import horizontal from '@/shared/assets/brand/logo-horizontal.svg';
+import stackedDark from '@/shared/assets/brand/logo-stacked-dark.svg';
+import stacked from '@/shared/assets/brand/logo-stacked.svg';
+
+const sources = {
+  horizontal: { light: horizontal, dark: horizontalDark },
+  stacked: { light: stacked, dark: stackedDark },
+};
 
 interface LogoProps {
   href?: string;
+  // 'dark' é a versão clara da marca, para fundos escuros (sidebar, rodapé, foto)
   tone?: 'light' | 'dark';
+  variant?: keyof typeof sources;
+  // Altura da imagem; a largura acompanha a proporção da logo
+  imageClassName?: string;
   className?: string;
 }
 
-export function Logo({ href = '/', tone = 'light', className }: LogoProps) {
+export function Logo({
+  href = '/',
+  tone = 'light',
+  variant = 'horizontal',
+  imageClassName = 'h-10',
+  className,
+}: LogoProps) {
   return (
-    <Link href={href} className={cn('inline-flex items-center gap-2.5 rounded-lg', className)}>
-      <span
-        className={cn(
-          'grid size-9 place-items-center rounded-xl',
-          tone === 'light'
-            ? 'bg-brand text-brand-foreground'
-            : 'bg-sidebar-primary text-sidebar-primary-foreground',
-        )}
-      >
-        <Leaf className="size-5" aria-hidden />
-      </span>
-      <span
-        className={cn(
-          'font-display text-xl font-semibold tracking-tight',
-          tone === 'light' ? 'text-brand' : 'text-sidebar-accent-foreground',
-        )}
-      >
-        Preservio
-      </span>
+    <Link href={href} className={cn('inline-flex shrink-0 rounded-lg', className)}>
+      <Image
+        src={sources[variant][tone]}
+        alt="Preservio"
+        priority
+        className={cn('w-auto', imageClassName)}
+      />
     </Link>
   );
 }

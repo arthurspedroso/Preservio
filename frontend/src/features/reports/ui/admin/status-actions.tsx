@@ -7,6 +7,7 @@ import { Alert } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
 import { ConfirmDialog } from '@/shared/ui/confirm-dialog';
 import { FormField } from '@/shared/ui/form-field';
+import { Panel } from '@/shared/ui/panel';
 import { Select } from '@/shared/ui/select';
 import { Spinner } from '@/shared/ui/spinner';
 import { Textarea } from '@/shared/ui/textarea';
@@ -211,18 +212,12 @@ export function StatusActions({ report }: { report: Report }) {
 
   return (
     <div className="space-y-5">
-      <section className="rounded-xl border bg-card p-5 shadow-soft">
-        <h2 className="mb-4 font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          {t('changeStatus')}
-        </h2>
+      <Panel title={t('changeStatus')}>
         <ChangeStatus report={report} />
-      </section>
-      <section className="rounded-xl border bg-card p-5 shadow-soft">
-        <h2 className="mb-4 font-sans text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          {t('respond')}
-        </h2>
+      </Panel>
+      <Panel title={t('respond')}>
         <RespondForm report={report} />
-      </section>
+      </Panel>
     </div>
   );
 }

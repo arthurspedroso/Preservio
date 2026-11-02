@@ -177,7 +177,7 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
       <PageHeader title={t('title')} description={t('description')} />
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
-        <div ref={containerRef} className="min-w-0 scroll-mt-20 space-y-5">
+        <div ref={containerRef} className="min-w-0 scroll-mt-24 space-y-5">
           <WizardProgress current={step} reached={reached} onSelect={goTo} />
 
           <form
@@ -193,15 +193,15 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
                 direction === 'next' ? 'animate-step-in-next' : 'animate-step-in-prev',
               )}
             >
-              <header className="mb-8">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+              <header className="mb-6">
+                <p className="text-xs font-semibold text-primary">
                   {t('progress.stepOf', { current: step + 1, total: STEPS.length })}
                 </p>
                 <h2
                   id="step-title"
                   ref={headingRef}
                   tabIndex={-1}
-                  className="mt-1 text-2xl font-semibold focus:outline-none"
+                  className="mt-1 text-xl font-semibold focus:outline-none"
                 >
                   {t(`steps.${stepKey}.title`)}
                 </h2>
@@ -271,7 +271,7 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
           </form>
         </div>
 
-        <div className="lg:sticky lg:top-6">
+        <div className="lg:sticky lg:top-24">
           <StepTips step={stepKey} />
         </div>
       </div>

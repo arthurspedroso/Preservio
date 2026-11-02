@@ -18,13 +18,10 @@ export function DemoAccounts({
   const t = useTranslations('auth.demo');
 
   return (
-    <section
-      aria-labelledby="demo-accounts-title"
-      className="rounded-xl border border-dashed border-warning/60 bg-warning/5 p-4"
-    >
+    <section aria-labelledby="demo-accounts-title" className="rounded-xl border bg-muted/60 p-4">
       <h2
         id="demo-accounts-title"
-        className="flex items-center gap-2 font-sans text-sm font-semibold tracking-normal text-warning-foreground"
+        className="flex items-center gap-2 text-sm font-semibold text-warning-foreground"
       >
         <FlaskConical className="size-4" aria-hidden />
         {t('title')}
@@ -42,9 +39,12 @@ export function DemoAccounts({
                 <Icon className="size-4" aria-hidden />
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block font-medium">{t(`${key}.label`)}</span>
-                <span className="block truncate font-mono text-xs text-muted-foreground">
-                  {DEMO_ACCOUNTS[key].email} · {DEMO_ACCOUNTS[key].password}
+                <span className="block font-medium leading-snug">{t(`${key}.label`)}</span>
+                <span className="mt-0.5 block break-all font-mono text-xs text-muted-foreground">
+                  {DEMO_ACCOUNTS[key].email}
+                </span>
+                <span className="block font-mono text-xs text-muted-foreground">
+                  {DEMO_ACCOUNTS[key].password}
                 </span>
               </span>
               <span className="text-xs font-medium text-primary">{t('fill')}</span>

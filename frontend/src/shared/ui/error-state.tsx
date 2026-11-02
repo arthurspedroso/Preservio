@@ -20,7 +20,7 @@ export function ErrorState({ title, description, onRetry }: ErrorStateProps) {
       <span className="mb-3 grid size-11 place-items-center rounded-full bg-destructive/10 text-destructive">
         <TriangleAlert className="size-5" aria-hidden />
       </span>
-      <p className="font-display text-lg font-semibold text-brand">{title ?? t('title')}</p>
+      <p className="font-display text-base font-semibold text-brand">{title ?? t('title')}</p>
       <p className="mt-1 max-w-md text-sm text-muted-foreground">
         {description ?? t('description')}
       </p>

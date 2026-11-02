@@ -19,8 +19,12 @@ export function PageHeader({ title, description, eyebrow, actions, className }: 
     >
       <div className="space-y-1.5">
         {eyebrow && <div className="text-sm font-medium text-primary">{eyebrow}</div>}
-        <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
-        {description && <p className="max-w-2xl text-muted-foreground">{description}</p>}
+        <h1 className="text-2xl font-bold sm:text-3xl">{title}</h1>
+        {description && (
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            {description}
+          </p>
+        )}
       </div>
       {actions && <div className="flex shrink-0 flex-wrap gap-2">{actions}</div>}
     </header>

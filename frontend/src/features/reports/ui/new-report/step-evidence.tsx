@@ -112,10 +112,7 @@ export function StepEvidence({ files, rejections, onAdd, onRemove }: StepEvidenc
 
       {files.length > 0 ? (
         <section aria-labelledby="selected-title">
-          <h3
-            id="selected-title"
-            className="font-sans text-sm font-semibold tracking-normal text-foreground"
-          >
+          <h3 id="selected-title" className="text-sm font-semibold text-foreground">
             {t('selected', { count: files.length, max: EVIDENCE_LIMITS.maxFiles })}
           </h3>
           <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">

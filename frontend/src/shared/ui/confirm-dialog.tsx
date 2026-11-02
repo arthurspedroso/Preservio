@@ -38,14 +38,14 @@ export function ConfirmDialog({
   return (
     <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
       <AlertDialog.Portal>
-        <AlertDialog.Overlay className="fixed inset-0 z-50 bg-brand/40 backdrop-blur-[2px]" />
+        <AlertDialog.Overlay className="fixed inset-0 z-50 animate-fade-in bg-foreground/40" />
         <AlertDialog.Content
           className={cn(
-            'fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2',
-            'rounded-xl border bg-card p-6 shadow-soft focus:outline-none',
+            'fixed left-1/2 top-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 overflow-y-auto',
+            'animate-fade-in rounded-xl border bg-card p-6 shadow-overlay focus:outline-none',
           )}
         >
-          <AlertDialog.Title className="font-display text-xl font-semibold text-brand">
+          <AlertDialog.Title className="font-display text-lg font-semibold text-brand">
             {title}
           </AlertDialog.Title>
           {description && (

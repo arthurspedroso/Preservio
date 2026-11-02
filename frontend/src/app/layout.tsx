@@ -1,17 +1,13 @@
 import type { Metadata } from 'next';
-import { Fraunces, Instrument_Sans } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { defaultLocale, defaultTimeZone } from '@/shared/i18n/config';
 import { Providers } from './providers';
 import './globals.css';
 
-const sans = Instrument_Sans({ subsets: ['latin'], variable: '--font-sans' });
-const display = Fraunces({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-display',
-});
+const sans = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const display = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display' });
 
 export const metadata: Metadata = {
   title: {

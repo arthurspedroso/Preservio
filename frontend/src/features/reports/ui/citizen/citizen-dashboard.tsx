@@ -43,10 +43,10 @@ export function CitizenDashboard() {
         {!isEmpty && (
           <section
             aria-labelledby="cta-title"
-            className="flex flex-col gap-5 rounded-2xl bg-brand p-6 text-brand-foreground sm:flex-row sm:items-center sm:justify-between sm:p-8"
+            className="flex flex-col gap-5 rounded-xl bg-brand p-6 text-brand-foreground sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="max-w-xl">
-              <h2 id="cta-title" className="text-2xl font-semibold !text-brand-foreground">
+              <h2 id="cta-title" className="text-xl font-semibold !text-brand-foreground">
                 {t('ctaTitle')}
               </h2>
               <p className="mt-1.5 text-sm leading-relaxed text-brand-foreground/85">
@@ -64,7 +64,7 @@ export function CitizenDashboard() {
 
         <section aria-labelledby="in-progress-title">
           <div className="mb-4 flex items-end justify-between gap-3">
-            <h2 id="in-progress-title" className="text-2xl font-semibold">
+            <h2 id="in-progress-title" className="text-xl font-semibold">
               {t('inProgress')}
             </h2>
             {!isEmpty && (
@@ -108,7 +108,7 @@ export function CitizenDashboard() {
         </section>
 
         <section aria-labelledby="help-title">
-          <h2 id="help-title" className="mb-4 text-2xl font-semibold">
+          <h2 id="help-title" className="mb-4 text-xl font-semibold">
             {t('helpTitle')}
           </h2>
           <ul className="grid gap-4 sm:grid-cols-2">

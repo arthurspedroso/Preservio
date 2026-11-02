@@ -3,7 +3,17 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, FilePlus2, LogOut, Menu as MenuIcon, UserRound } from 'lucide-react';
+import {
+  BookOpen,
+  ChevronDown,
+  FilePlus2,
+  Files,
+  LayoutDashboard,
+  LogOut,
+  Menu as MenuIcon,
+  MessagesSquare,
+  UserRound,
+} from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { initialsOf } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
@@ -19,15 +29,20 @@ import {
 } from '@/shared/ui/dropdown-menu';
 import { Logo } from '@/shared/ui/logo';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/shared/ui/sheet';
+import { barLinkClassName, listLinkClassName, NavGroup } from './nav-link';
 import { MAIN_CONTENT_ID, SkipLink } from './skip-link';
 
 const NEW_REPORT_HREF = '/denuncias/nova';
+const PROFILE_HREF = '/perfil';
 
-const links = [
-  { href: '/painel', key: 'dashboard' },
-  { href: '/denuncias', key: 'myReports' },
-  { href: '/assistente', key: 'assistant' },
-  { href: '/orientacoes', key: 'guidance' },
+const reportLinks = [
+  { href: '/painel', key: 'dashboard', icon: LayoutDashboard },
+  { href: '/denuncias', key: 'myReports', icon: Files },
+] as const;
+
+const helpLinks = [
+  { href: '/assistente', key: 'assistant', icon: MessagesSquare },
+  { href: '/orientacoes', key: 'guidance', icon: BookOpen },
 ] as const;
 
 interface CitizenShellProps {
@@ -47,13 +62,14 @@ export function CitizenShell({ user, onLogout, children }: CitizenShellProps) {
     }
     return pathname === href;
   };
+  const helpActive = helpLinks.some(({ href }) => isActive(href));
 
   return (
     <div className="flex min-h-screen flex-col">
       <SkipLink />
       <DemoBanner />
       <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6">
+        <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6 md:gap-6">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -65,21 +81,20 @@ export function CitizenShell({ user, onLogout, children }: CitizenShellProps) {
                 <MenuIcon className="!size-5" aria-hidden />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="gap-6 p-6 pt-16">
+            <SheetContent side="left" className="gap-6 overflow-y-auto p-5 pt-5">
               <SheetTitle className="sr-only">{t('navLabel')}</SheetTitle>
-              <nav aria-label={t('navLabel')}>
-                <ul className="space-y-1">
-                  {links.map(({ href, key }) => (
+              <Logo href="/painel" className="self-start" />
+              <nav aria-label={t('navLabel')} className="space-y-5">
+                <NavGroup label={t('groups.reports')}>
+                  {reportLinks.map(({ href, key, icon: Icon }) => (
                     <li key={href}>
                       <SheetClose asChild>
                         <Link
                           href={href}
                           aria-current={isActive(href) ? 'page' : undefined}
-                          className={cn(
-                            'block rounded-lg px-3 py-2.5 text-base transition-colors hover:bg-muted',
-                            isActive(href) && 'bg-secondary font-medium text-secondary-foreground',
-                          )}
+                          className={listLinkClassName(isActive(href))}
                         >
+                          <Icon aria-hidden />
                           {t(`nav.${key}`)}
                         </Link>
                       </SheetClose>
@@ -88,22 +103,49 @@ export function CitizenShell({ user, onLogout, children }: CitizenShellProps) {
                   <li>
                     <SheetClose asChild>
                       <Link
-                        href="/perfil"
-                        aria-current={pathname === '/perfil' ? 'page' : undefined}
-                        className={cn(
-                          'block rounded-lg px-3 py-2.5 text-base transition-colors hover:bg-muted',
-                          pathname === '/perfil' &&
-                            'bg-secondary font-medium text-secondary-foreground',
-                        )}
+                        href={NEW_REPORT_HREF}
+                        aria-current={isActive(NEW_REPORT_HREF) ? 'page' : undefined}
+                        className={listLinkClassName(isActive(NEW_REPORT_HREF))}
                       >
+                        <FilePlus2 aria-hidden />
+                        {t('newReport')}
+                      </Link>
+                    </SheetClose>
+                  </li>
+                </NavGroup>
+                <NavGroup label={t('groups.help')}>
+                  {helpLinks.map(({ href, key, icon: Icon }) => (
+                    <li key={href}>
+                      <SheetClose asChild>
+                        <Link
+                          href={href}
+                          aria-current={isActive(href) ? 'page' : undefined}
+                          className={listLinkClassName(isActive(href))}
+                        >
+                          <Icon aria-hidden />
+                          {t(`nav.${key}`)}
+                        </Link>
+                      </SheetClose>
+                    </li>
+                  ))}
+                </NavGroup>
+                <NavGroup label={t('groups.account')}>
+                  <li>
+                    <SheetClose asChild>
+                      <Link
+                        href={PROFILE_HREF}
+                        aria-current={isActive(PROFILE_HREF) ? 'page' : undefined}
+                        className={listLinkClassName(isActive(PROFILE_HREF))}
+                      >
+                        <UserRound aria-hidden />
                         {t('profile')}
                       </Link>
                     </SheetClose>
                   </li>
-                </ul>
+                </NavGroup>
               </nav>
-              <div className="mt-auto space-y-3">
-                <div className="rounded-xl border p-3">
+              <div className="mt-auto space-y-3 border-t pt-4">
+                <div className="px-1">
                   <p className="truncate text-sm font-medium">{user.name}</p>
                   <p className="truncate text-xs text-muted-foreground">{user.email}</p>
                 </div>
@@ -119,20 +161,42 @@ export function CitizenShell({ user, onLogout, children }: CitizenShellProps) {
 
           <nav aria-label={t('navLabel')} className="hidden md:block">
             <ul className="flex items-center gap-1">
-              {links.map(({ href, key }) => (
+              {reportLinks.map(({ href, key }) => (
                 <li key={href}>
                   <Link
                     href={href}
                     aria-current={isActive(href) ? 'page' : undefined}
-                    className={cn(
-                      'rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground',
-                      isActive(href) && 'font-medium text-foreground',
-                    )}
+                    className={barLinkClassName(isActive(href))}
                   >
                     {t(`nav.${key}`)}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Menu>
+                  <MenuTrigger className={cn(barLinkClassName(helpActive), 'group')}>
+                    {t('groups.help')}
+                    <ChevronDown
+                      className="size-3.5 transition-transform group-data-[state=open]:rotate-180"
+                      aria-hidden
+                    />
+                  </MenuTrigger>
+                  <MenuContent align="start">
+                    {helpLinks.map(({ href, key, icon: Icon }) => (
+                      <MenuItem key={href} asChild>
+                        <Link
+                          href={href}
+                          aria-current={isActive(href) ? 'page' : undefined}
+                          className={cn(isActive(href) && 'bg-secondary font-medium')}
+                        >
+                          <Icon aria-hidden />
+                          {t(`nav.${key}`)}
+                        </Link>
+                      </MenuItem>
+                    ))}
+                  </MenuContent>
+                </Menu>
+              </li>
             </ul>
           </nav>
 
@@ -150,7 +214,7 @@ export function CitizenShell({ user, onLogout, children }: CitizenShellProps) {
                 <button
                   type="button"
                   aria-label={t('account')}
-                  className="hidden items-center gap-1.5 rounded-full border bg-card py-1 pl-1 pr-2 transition-colors hover:bg-secondary/60 md:flex"
+                  className="hidden h-9 items-center gap-1.5 rounded-full border bg-card pl-1 pr-2 transition-colors hover:bg-muted md:flex"
                 >
                   <span className="grid size-7 place-items-center rounded-full bg-brand text-xs font-semibold text-brand-foreground">
                     {initialsOf(user.name)}
@@ -165,7 +229,7 @@ export function CitizenShell({ user, onLogout, children }: CitizenShellProps) {
                 </MenuLabel>
                 <MenuSeparator />
                 <MenuItem asChild>
-                  <Link href="/perfil">
+                  <Link href={PROFILE_HREF}>
                     <UserRound aria-hidden />
                     {t('profile')}
                   </Link>

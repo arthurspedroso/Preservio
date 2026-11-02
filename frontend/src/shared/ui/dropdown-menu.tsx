@@ -16,7 +16,7 @@ const MenuContent = forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        'z-50 min-w-56 rounded-xl border bg-card p-1.5 text-card-foreground shadow-soft',
+        'z-50 min-w-56 animate-fade-in rounded-xl border bg-card p-1.5 text-card-foreground shadow-overlay',
         className,
       )}
       {...props}
@@ -32,7 +32,7 @@ const MenuItem = forwardRef<
   <Primitive.Item
     ref={ref}
     className={cn(
-      'flex cursor-pointer select-none items-center gap-2.5 rounded-lg px-3 py-2 text-sm outline-none transition-colors data-[highlighted]:bg-secondary data-[highlighted]:text-secondary-foreground [&_svg]:size-4 [&_svg]:shrink-0',
+      'flex cursor-pointer select-none items-center gap-2.5 rounded-lg px-3 py-2 text-sm outline-none transition-colors data-[highlighted]:bg-muted [&_svg]:size-4 [&_svg]:shrink-0',
       className,
     )}
     {...props}
