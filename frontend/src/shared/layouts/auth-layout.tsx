@@ -18,20 +18,23 @@ export function AuthLayout({ title, description, children }: AuthLayoutProps) {
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <SkipLink />
-      <div className="relative hidden lg:block">
-        <Image
-          src={heroForest}
-          alt={t('imageAlt')}
-          fill
-          priority
-          sizes="50vw"
-          placeholder="blur"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-hero-overlay" aria-hidden />
-        <p className="absolute inset-x-10 bottom-10 font-display text-3xl font-semibold leading-tight text-brand-foreground">
-          {t('quote')}
-        </p>
+      {/* Painel fixo na tela enquanto o formulário rola */}
+      <div className="sticky top-0 hidden h-screen lg:block">
+        <div className="relative h-full">
+          <Image
+            src={heroForest}
+            alt={t('imageAlt')}
+            fill
+            priority
+            sizes="50vw"
+            placeholder="blur"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-hero-overlay" aria-hidden />
+          <p className="absolute inset-x-10 bottom-10 font-display text-3xl font-semibold leading-tight text-brand-foreground">
+            {t('quote')}
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-col px-4 py-8 sm:px-10">

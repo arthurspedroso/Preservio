@@ -26,7 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const messages = await getMessages();
 
   return (
-    <html lang={defaultLocale}>
+    <html lang={defaultLocale} data-scroll-behavior="smooth">
       <body className={`${sans.variable} ${display.variable}`}>
         <NextIntlClientProvider
           locale={defaultLocale}

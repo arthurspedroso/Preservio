@@ -1,5 +1,6 @@
 'use client';
 
+import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
@@ -9,12 +10,17 @@ import { Button } from '@/shared/ui/button';
 import { Logo } from '@/shared/ui/logo';
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from '@/shared/ui/sheet';
 
+export interface SiteHeaderProps {
+  // Botões de conta (entrar/criar conta ou "Meu painel"), injetados pela camada de app
+  accountActions?: { desktop: ReactNode; mobile: ReactNode };
+}
+
 const links = [
   { href: '/', key: 'home' },
   { href: '/orientacoes', key: 'guidance' },
 ] as const;
 
-export function SiteHeader() {
+export function SiteHeader({ accountActions }: SiteHeaderProps) {
   const t = useTranslations('nav');
   const pathname = usePathname();
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
@@ -44,12 +50,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Button asChild variant="ghost" size="sm">
-            <Link href="/entrar">{t('login')}</Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link href="/cadastro">{t('signup')}</Link>
-          </Button>
+          {accountActions?.desktop ?? <GuestActions />}
         </div>
 
         <Sheet>
@@ -82,20 +83,43 @@ export function SiteHeader() {
               </ul>
             </nav>
             <div className="mt-auto grid gap-2">
-              <SheetClose asChild>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/entrar">{t('login')}</Link>
-                </Button>
-              </SheetClose>
-              <SheetClose asChild>
-                <Button asChild size="lg">
-                  <Link href="/cadastro">{t('signup')}</Link>
-                </Button>
-              </SheetClose>
+              {accountActions?.mobile ?? <GuestActions mobile />}
             </div>
           </SheetContent>
         </Sheet>
       </div>
     </header>
+  );
+}
+
+export function GuestActions({ mobile = false }: { mobile?: boolean }) {
+  const t = useTranslations('nav');
+
+  if (mobile) {
+    return (
+      <>
+        <SheetClose asChild>
+          <Button asChild variant="outline" size="lg">
+            <Link href="/entrar">{t('login')}</Link>
+          </Button>
+        </SheetClose>
+        <SheetClose asChild>
+          <Button asChild size="lg">
+            <Link href="/cadastro">{t('signup')}</Link>
+          </Button>
+        </SheetClose>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/entrar">{t('login')}</Link>
+      </Button>
+      <Button asChild size="sm">
+        <Link href="/cadastro">{t('signup')}</Link>
+      </Button>
+    </>
   );
 }
