@@ -92,15 +92,48 @@ async function seedUsers(): Promise<StoredUser[]> {
       DEMO_ACCOUNTS.admin.password,
       'demo-admin-carlos',
     ),
+    // Outros cidadãos de exemplo, para o painel administrativo não aparecer com uma só pessoa
+    make(
+      {
+        name: 'João Almeida',
+        email: 'joao.almeida@preservio.dev',
+        role: 'citizen',
+        cpf: '11144477735',
+        phone: '19991234567',
+      },
+      'Demo12345',
+      'demo-citizen-joao',
+    ),
+    make(
+      {
+        name: 'Ana Ribeiro',
+        email: 'ana.ribeiro@preservio.dev',
+        role: 'citizen',
+        cpf: '16899535009',
+        phone: null,
+      },
+      'Demo12345',
+      'demo-citizen-ana',
+    ),
   ]);
 }
 
+const DEMO_USER_IDS = [
+  'demo-citizen-maria',
+  'demo-admin-carlos',
+  'demo-citizen-joao',
+  'demo-citizen-ana',
+];
+
 async function getUsers(): Promise<StoredUser[]> {
   const stored = readCollection<StoredUser>(COLLECTION);
-  if (stored) return stored;
+  if (stored && DEMO_USER_IDS.every((id) => stored.some((u) => u.id === id))) return stored;
+
+  // Primeira visita, ou navegador com dados de uma versão anterior: completa as contas de exemplo
   const seeded = await seedUsers();
-  writeCollection(COLLECTION, seeded);
-  return seeded;
+  const merged = [...(stored ?? []), ...seeded.filter((s) => !stored?.some((u) => u.id === s.id))];
+  writeCollection(COLLECTION, merged);
+  return merged;
 }
 
 // Token opaco no formato "mock.<payload base64>", validado a cada chamada como o JWT do backend
@@ -170,6 +203,19 @@ export const authService = {
       throw new ApiError('E-mail ou senha incorretos.', 401);
     }
     return { accessToken: issueToken(user), role: user.role };
+  },
+
+  // Dados de contato de um usuário, para o serviço de denúncias (uso interno, como um join no banco)
+  async findSummary(id: string) {
+    const user = (await getUsers()).find((u) => u.id === id);
+    if (!user) return null;
+    return {
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      cpf: user.cpf,
+      agency: user.agency,
+    };
   },
 
   async me(token: string): Promise<SessionUser> {

@@ -13,7 +13,7 @@ function AreaShell({ area, children }: { area: AppArea; children: ReactNode }) {
   return (
     <AppShell
       area={area}
-      user={{ name: user?.name ?? '', email: user?.email ?? '' }}
+      user={{ name: user?.name ?? '', email: user?.email ?? '', agency: user?.agency }}
       onLogout={logout}
     >
       {children}

@@ -42,7 +42,7 @@ const DEFAULT_VALUES: ReportFormValues = {
 const stepOfFirstError = (errors: FieldErrors<ReportFormValues>) =>
   STEP_FIELDS.findIndex((fields) => fields.some((field) => field in errors));
 
-export function NewReportWizard() {
+export function NewReportWizard({ initialCategory }: { initialCategory?: ReportCategory }) {
   const t = useTranslations('reports.new');
   const tv = useTranslations('reports.new.validation');
   const router = useRouter();
@@ -51,7 +51,7 @@ export function NewReportWizard() {
   // Um único formulário para todas as etapas: voltar não perde nada do que foi preenchido
   const form = useForm<ReportFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: DEFAULT_VALUES,
+    defaultValues: { ...DEFAULT_VALUES, category: initialCategory ?? '' },
     mode: 'onTouched',
     shouldFocusError: false,
   });

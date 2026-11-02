@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
+import { AssistantChat } from '@/features/assistant/ui/assistant-chat';
 import { PageHeader } from '@/shared/ui/page-header';
-import { UnderConstruction } from '@/shared/ui/under-construction';
 
 export const metadata: Metadata = { title: 'Assistente ambiental' };
 
-// Chatbot simulado na Fase 5 (RF08, RF09)
+// RF08 e RF09 (Could have) — demonstração simulada por regras, sem IA
 export default function AssistantPage() {
+  const t = useTranslations('assistant');
+
   return (
-    <>
-      <PageHeader
-        title="Assistente ambiental"
-        description="Tire dúvidas gerais sobre questões ambientais e sobre como registrar uma denúncia."
-      />
-      <UnderConstruction />
-    </>
+    <div className="mx-auto max-w-3xl">
+      <PageHeader title={t('title')} description={t('description')} />
+      <AssistantChat />
+    </div>
   );
 }

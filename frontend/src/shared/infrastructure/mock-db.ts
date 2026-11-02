@@ -39,3 +39,10 @@ export async function hashSecret(secret: string): Promise<string> {
   for (let i = 0; i < secret.length; i++) hash = (hash * 33) ^ secret.charCodeAt(i);
   return `djb2-${(hash >>> 0).toString(16)}`;
 }
+
+// Apaga as coleções e a sessão deste navegador; a próxima visita recria os dados de exemplo
+export function resetDemoData(): void {
+  Object.keys(window.localStorage)
+    .filter((key) => key.startsWith(PREFIX))
+    .forEach((key) => window.localStorage.removeItem(key));
+}

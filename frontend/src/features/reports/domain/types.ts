@@ -9,6 +9,16 @@ export const REPORT_STATUSES = [
 ] as const;
 export type ReportStatus = (typeof REPORT_STATUSES)[number];
 
+// Regras de negócio da tramitação: o admin só avança o fluxo; estados finais não mudam mais
+export const ALLOWED_TRANSITIONS: Record<ReportStatus, readonly ReportStatus[]> = {
+  received: ['in_review', 'not_upheld'],
+  in_review: ['in_progress', 'resolved', 'not_upheld'],
+  in_progress: ['resolved', 'not_upheld'],
+  resolved: [],
+  not_upheld: [],
+};
+export const isFinalStatus = (status: ReportStatus) => ALLOWED_TRANSITIONS[status].length === 0;
+
 // Etapas exibidas na linha do tempo; a última é "resolved" ou "not_upheld"
 export const STATUS_FLOW = ['received', 'in_review', 'in_progress'] as const;
 export const FINAL_STATUSES = ['resolved', 'not_upheld'] as const;
@@ -49,7 +59,24 @@ export interface ReportHistoryEntry {
   status?: ReportStatus;
   message?: string;
   authorRole: 'citizen' | 'admin';
+  // Órgão que respondeu (exibido ao cidadão no lugar do nome da pessoa)
+  authorName?: string;
   createdAt: string;
+}
+
+// Registro de cada vez que um administrador exibiu o CPF completo do denunciante (LGPD)
+export interface DataAccessEntry {
+  id: string;
+  adminName: string;
+  at: string;
+}
+
+// Dados do denunciante vistos pelo admin; o CPF completo só sai por revealCpf
+export interface CitizenIdentity {
+  name: string;
+  email: string;
+  phone: string | null;
+  cpfMasked: string;
 }
 
 export interface Report {
@@ -64,9 +91,13 @@ export interface Report {
   evidences: ReportEvidence[];
   status: ReportStatus;
   history: ReportHistoryEntry[];
+  accessLog?: DataAccessEntry[];
   createdAt: string;
   updatedAt: string;
 }
+
+export const hasOrgResponse = (report: Report) =>
+  report.history.some((entry) => entry.authorRole === 'admin' && entry.message);
 
 export interface CreateReportInput {
   title: string;
