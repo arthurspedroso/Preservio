@@ -1,18 +1,9 @@
 import type { Metadata } from 'next';
-import { PageHeader } from '@/shared/ui/page-header';
-import { UnderConstruction } from '@/shared/ui/under-construction';
+import { NewReportWizard } from '@/features/reports';
 
 export const metadata: Metadata = { title: 'Nova denúncia' };
 
-// Formulário completo na Fase 2 (RF04 a RF07)
+// RF04, RF05, RF06 e RF07 — fluxo do diagrama de sequência "Registrar Denúncia"
 export default function NewReportPage() {
-  return (
-    <>
-      <PageHeader
-        title="Nova denúncia"
-        description="Informe o que aconteceu, quando e onde. Quanto mais detalhes, mais fácil será a análise."
-      />
-      <UnderConstruction />
-    </>
-  );
+  return <NewReportWizard />;
 }

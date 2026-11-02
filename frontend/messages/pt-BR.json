@@ -247,6 +247,196 @@
         "label": "Outra ocorrência ambiental",
         "description": "Qualquer outro problema que não se encaixe nas opções acima."
       }
+    },
+    "new": {
+      "title": "Nova denúncia",
+      "description": "Conte o que aconteceu, quando e onde. Leva cerca de 3 minutos e você pode voltar às etapas anteriores a qualquer momento.",
+      "submitErrorTitle": "Não foi possível enviar a denúncia",
+      "submitError": "Ocorreu um erro inesperado. Seus dados continuam aqui; tente enviar novamente.",
+      "progress": {
+        "label": "Etapas do registro",
+        "stepOf": "Etapa {current} de {total}",
+        "done": "(concluída)",
+        "current": "(etapa atual)",
+        "todo": "(pendente)"
+      },
+      "steps": {
+        "occurrence": {
+          "short": "Ocorrência",
+          "title": "O que aconteceu?",
+          "description": "Escolha o tipo de problema e descreva o que você presenciou."
+        },
+        "location": {
+          "short": "Data e local",
+          "title": "Quando e onde?",
+          "description": "A localização é obrigatória: é ela que permite ao órgão encontrar o problema."
+        },
+        "evidence": {
+          "short": "Evidências",
+          "title": "Fotos e vídeos",
+          "description": "Opcional. Imagens ajudam a entender a situação, mas não são necessárias para enviar."
+        },
+        "review": {
+          "short": "Revisão",
+          "title": "Revise antes de enviar",
+          "description": "Confira as informações. Depois de enviada, a denúncia não pode ser editada."
+        }
+      },
+      "actions": {
+        "cancel": "Cancelar",
+        "back": "Voltar",
+        "next": "Continuar",
+        "skipEvidence": "Continuar sem evidências",
+        "submit": "Enviar denúncia",
+        "submitting": "Enviando…"
+      },
+      "cancelDialog": {
+        "title": "Descartar esta denúncia?",
+        "description": "As informações preenchidas e os arquivos selecionados serão perdidos. Esta ação não pode ser desfeita.",
+        "confirm": "Descartar",
+        "keep": "Continuar preenchendo"
+      },
+      "validation": {
+        "categoryRequired": "Selecione o tipo de ocorrência.",
+        "titleMin": "Escreva um título com pelo menos 5 caracteres.",
+        "titleMax": "Use no máximo 120 caracteres.",
+        "descriptionMin": "Descreva o problema com pelo menos 20 caracteres.",
+        "descriptionMax": "Use no máximo 4000 caracteres.",
+        "dateRequired": "Informe a data da ocorrência.",
+        "dateFuture": "A data não pode estar no futuro.",
+        "dateTooOld": "Informe uma data a partir de 2000.",
+        "stateRequired": "Selecione o estado.",
+        "cityRequired": "Informe o município.",
+        "addressRequired": "Informe o endereço ou uma referência do local (mínimo de 5 caracteres).",
+        "referenceMax": "Use no máximo 500 caracteres."
+      },
+      "occurrence": {
+        "categoryLabel": "Tipo de ocorrência",
+        "categoryHint": "Serve para organizar a análise. Se não tiver certeza, escolha a opção mais próxima ou “Outra ocorrência”.",
+        "titleLabel": "Título",
+        "titleHint": "Um resumo curto que ajude a identificar a denúncia na lista.",
+        "titlePlaceholder": {
+          "waste_disposal": "Ex.: Entulho descartado às margens do córrego",
+          "deforestation": "Ex.: Corte de árvores em área de mata",
+          "water_pollution": "Ex.: Esgoto sendo despejado no rio",
+          "air_pollution": "Ex.: Fumaça escura saindo de chaminé",
+          "fire": "Ex.: Queimada em terreno baldio",
+          "other": "Ex.: Descreva o problema em poucas palavras"
+        },
+        "descriptionLabel": "Descrição",
+        "descriptionPrompt1": "O que você viu e qual o tamanho aproximado do problema?",
+        "descriptionPrompt2": "Ainda está acontecendo? É algo recorrente?",
+        "descriptionPrompt3": "Há pessoas, animais ou nascentes afetados por perto?",
+        "descriptionPlaceholder": "Descreva com suas palavras o que aconteceu…"
+      },
+      "location": {
+        "whenTitle": "Quando",
+        "dateLabel": "Data da ocorrência",
+        "dateHint": "O dia em que você presenciou o problema. Se for recorrente, informe a última vez.",
+        "quick": {
+          "today": "Hoje",
+          "yesterday": "Ontem"
+        },
+        "whereTitle": "Onde",
+        "precisionTitle": "Quanto mais preciso, melhor",
+        "precisionText": "Informe rua, número, bairro ou pontos de referência. O protótipo não usa sua localização automaticamente: o local é preenchido por você.",
+        "stateLabel": "Estado",
+        "statePlaceholder": "Selecione",
+        "cityLabel": "Município",
+        "cityPlaceholder": "Ex.: Campinas",
+        "addressLabel": "Endereço ou referência do local",
+        "addressHint": "Rua, número e bairro — ou, se não houver endereço, o nome do local.",
+        "addressPlaceholder": "Ex.: Rua das Palmeiras, 120 — Jardim Botânico",
+        "referenceLabel": "Ponto de referência",
+        "referenceHint": "Explique como chegar ou o que há por perto para facilitar a localização.",
+        "referencePlaceholder": "Ex.: Atrás do galpão azul, a uns 200 m da ponte"
+      },
+      "evidence": {
+        "safetyTitle": "Sua segurança vem primeiro",
+        "safetyText": "Registre imagens apenas se for seguro. Nunca se aproxime de fogo, de produtos químicos ou de pessoas que possam reagir.",
+        "dropTitle": "Arraste fotos ou vídeos para cá",
+        "fullTitle": "Limite de arquivos atingido",
+        "limits": "Até {max} arquivos. Fotos JPG, PNG ou WEBP com até {photoMb} MB; vídeos MP4, WEBM ou MOV com até {videoMb} MB.",
+        "choose": "Selecionar arquivos",
+        "added": "{count, plural, one {# arquivo adicionado} other {# arquivos adicionados}}",
+        "removed": "{name} removido",
+        "rejectedTitle": "Alguns arquivos não foram adicionados",
+        "reason": {
+          "type": "formato não aceito",
+          "size": "arquivo maior que o limite permitido",
+          "count": "limite de arquivos atingido"
+        },
+        "selected": "Arquivos selecionados ({count} de {max})",
+        "kind": {
+          "photo": "Foto",
+          "video": "Vídeo"
+        },
+        "remove": "Remover {name}",
+        "optionalNote": "Nenhum arquivo selecionado. Você pode continuar sem evidências."
+      },
+      "review": {
+        "occurrence": "Ocorrência",
+        "location": "Data e local",
+        "evidence": "Evidências",
+        "edit": "Editar {section}",
+        "editShort": "Editar",
+        "category": "Tipo",
+        "title": "Título",
+        "description": "Descrição",
+        "date": "Data da ocorrência",
+        "city": "Município",
+        "address": "Endereço ou referência",
+        "reference": "Ponto de referência",
+        "none": "Não informado",
+        "noEvidence": "Nenhuma evidência anexada.",
+        "privacy": "Seus dados de identificação (nome e CPF) serão compartilhados apenas com o órgão ambiental responsável pela análise. Eles não aparecem para outros cidadãos."
+      },
+      "tips": {
+        "title": "Dicas para esta etapa",
+        "occurrence": [
+          "Descreva fatos que você viu, sem acusações sem fundamento.",
+          "Informe a dimensão aproximada: um saco de lixo é diferente de um caminhão de entulho.",
+          "Se não souber a categoria exata, escolha a mais próxima — o órgão pode reclassificar."
+        ],
+        "location": [
+          "Pontos de referência ajudam quando não há número na rua.",
+          "Em áreas rurais, cite estradas, sítios ou placas próximas.",
+          "Use a data em que você presenciou o problema."
+        ],
+        "evidence": [
+          "Fotos de longe mostram o contexto; de perto, os detalhes.",
+          "Vídeos curtos costumam ser suficientes.",
+          "Evite registrar rostos de pessoas sem necessidade."
+        ],
+        "review": [
+          "Confira se o local está completo: é o dado mais importante.",
+          "Depois de enviada, a denúncia não pode ser editada por você.",
+          "Você receberá um protocolo para acompanhar o andamento."
+        ],
+        "emergencyTitle": "É uma emergência?",
+        "emergencyText": "Incêndios ativos ou riscos à vida devem ser comunicados imediatamente aos Bombeiros (193) ou à Defesa Civil (199)."
+      },
+      "submitted": {
+        "toast": "Denúncia enviada.",
+        "title": "Denúncia registrada com sucesso!",
+        "description": "Obrigado por contribuir com a preservação ambiental.",
+        "protocolLabel": "Protocolo",
+        "copy": "Copiar protocolo",
+        "copied": "Protocolo copiado.",
+        "copyFailed": "Não foi possível copiar. Anote o protocolo manualmente.",
+        "protocolHint": "Guarde este número para acompanhar sua denúncia.",
+        "summary": "Resumo da ocorrência",
+        "registeredAt": "Data do registro",
+        "status": "Status inicial",
+        "nextTitle": "O que acontece agora",
+        "next": [
+          "A denúncia é encaminhada ao órgão ambiental responsável pela região.",
+          "Um representante do órgão analisa as informações e atualiza o status.",
+          "Você acompanha cada etapa e as respostas em “Minhas denúncias”."
+        ],
+        "backToDashboard": "Voltar ao painel",
+        "follow": "Acompanhar denúncia"
+      }
     }
   }
 }

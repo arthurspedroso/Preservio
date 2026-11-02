@@ -109,7 +109,8 @@ function issueToken(user: StoredUser): string {
   return `mock.${btoa(JSON.stringify(payload))}`;
 }
 
-function readToken(token: string): { sub: string; role: UserRole } {
+// Usado pelos demais serviços simulados para autorizar cada operação, como o guard JWT do backend
+export function readToken(token: string): { sub: string; role: UserRole } {
   try {
     const payload = JSON.parse(atob(token.replace(/^mock\./, '')));
     if (typeof payload.exp !== 'number' || payload.exp < Date.now()) throw new Error();

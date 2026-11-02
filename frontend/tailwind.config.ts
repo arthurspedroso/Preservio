@@ -45,6 +45,26 @@ const config: Config = {
       boxShadow: {
         soft: '0 1px 2px oklch(30% 0.05 155 / 0.06), 0 8px 24px -12px oklch(30% 0.05 155 / 0.18)',
       },
+      // Transição entre etapas do formulário; desativada por prefers-reduced-motion (globals.css)
+      keyframes: {
+        'step-in-next': {
+          from: { opacity: '0', transform: 'translateX(24px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+        'step-in-prev': {
+          from: { opacity: '0', transform: 'translateX(-24px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
+        'pop-in': {
+          from: { opacity: '0', transform: 'scale(0.6)' },
+          to: { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        'step-in-next': 'step-in-next 260ms cubic-bezier(0.22, 1, 0.36, 1)',
+        'step-in-prev': 'step-in-prev 260ms cubic-bezier(0.22, 1, 0.36, 1)',
+        'pop-in': 'pop-in 400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
       backgroundImage: {
         'hero-overlay':
           'linear-gradient(180deg, oklch(20% 0.05 155 / 0.2), oklch(20% 0.05 155 / 0.85))',
