@@ -6,5 +6,129 @@
     "title": "Status da API",
     "checking": "Verificando...",
     "unreachable": "API inacessível"
+  },
+  "nav": {
+    "mainNav": "Principal",
+    "home": "Início",
+    "guidance": "Orientações ambientais",
+    "login": "Entrar",
+    "signup": "Criar conta",
+    "openMenu": "Abrir menu",
+    "skipToContent": "Pular para o conteúdo"
+  },
+  "layout": {
+    "footer": {
+      "about": "Sistema web para registro e acompanhamento de denúncias ambientais. Protótipo acadêmico de Engenharia de Software.",
+      "privacyTitle": "Privacidade",
+      "privacy": "Coletamos apenas os dados necessários para identificar o denunciante e analisar a ocorrência, em respeito à LGPD. Suas denúncias são visíveis apenas para você e para o órgão responsável.",
+      "teamTitle": "Equipe",
+      "team": "Nathália Helen Oliveira Leite, Isadora Costa Nascimento e Arthur de Souza Pedroso.",
+      "disclaimer": "Protótipo acadêmico com dados simulados — não substitui os canais oficiais dos órgãos ambientais."
+    },
+    "auth": {
+      "imageAlt": "Floresta preservada às margens de um rio",
+      "quote": "Sua atitude ajuda a proteger o meio ambiente."
+    },
+    "app": {
+      "navLabel": {
+        "citizen": "Área do cidadão",
+        "admin": "Área administrativa"
+      },
+      "nav": {
+        "dashboard": "Painel",
+        "myReports": "Minhas denúncias",
+        "assistant": "Assistente ambiental",
+        "guidance": "Orientações",
+        "profile": "Perfil",
+        "receivedReports": "Denúncias recebidas"
+      },
+      "newReport": "Nova denúncia",
+      "newReportShort": "Nova",
+      "adminBadge": "Ambiente de gestão",
+      "adminShort": "Gestão",
+      "openMenu": "Abrir menu",
+      "logout": "Sair da conta",
+      "roles": {
+        "citizen": "Cidadão",
+        "admin": "Administrador — órgão ambiental"
+      }
+    }
+  },
+  "ui": {
+    "formField": {
+      "optional": "opcional"
+    },
+    "passwordInput": {
+      "show": "Mostrar senha",
+      "hide": "Ocultar senha"
+    },
+    "confirmDialog": {
+      "confirm": "Confirmar",
+      "cancel": "Cancelar"
+    },
+    "sheet": {
+      "close": "Fechar menu"
+    },
+    "demoNotice": {
+      "label": "Dados simulados",
+      "description": "Protótipo acadêmico: as informações exibidas são fictícias e ficam salvas apenas neste navegador."
+    }
+  },
+  "reports": {
+    "status": {
+      "received": {
+        "label": "Recebida",
+        "description": "A denúncia foi registrada e aguarda análise."
+      },
+      "in_review": {
+        "label": "Em análise",
+        "description": "Um responsável do órgão está avaliando as informações."
+      },
+      "in_progress": {
+        "label": "Em andamento",
+        "description": "Providências estão sendo tomadas."
+      },
+      "resolved": {
+        "label": "Concluída",
+        "description": "O atendimento da denúncia foi finalizado."
+      },
+      "not_upheld": {
+        "label": "Não procedente",
+        "description": "Após análise, a denúncia não foi considerada procedente."
+      }
+    },
+    "stepper": {
+      "label": "Andamento da denúncia",
+      "done": "Etapa concluída",
+      "current": "Etapa atual",
+      "pending": "Pendente",
+      "finished": "Etapa final"
+    },
+    "categories": {
+      "waste_disposal": {
+        "label": "Descarte irregular de resíduos",
+        "description": "Lixo, entulho ou resíduos descartados em local inadequado."
+      },
+      "deforestation": {
+        "label": "Desmatamento",
+        "description": "Corte ou supressão de vegetação sem autorização aparente."
+      },
+      "water_pollution": {
+        "label": "Poluição da água",
+        "description": "Esgoto, óleo ou produtos lançados em rios, lagos ou no mar."
+      },
+      "air_pollution": {
+        "label": "Poluição do ar",
+        "description": "Fumaça, odores fortes ou emissões fora do comum."
+      },
+      "fire": {
+        "label": "Queimada",
+        "description": "Fogo em vegetação ou queima de materiais a céu aberto."
+      },
+      "other": {
+        "label": "Outra ocorrência ambiental",
+        "description": "Qualquer outro problema que não se encaixe nas opções acima."
+      }
+    }
   }
 }

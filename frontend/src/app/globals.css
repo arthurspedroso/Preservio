@@ -3,34 +3,80 @@
 @tailwind utilities;
 
 @layer base {
+  /* Canais OKLCH (L C H) — consumidos no tailwind.config via oklch(var(--x) / <alpha-value>) */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 74% 42%;
-    --destructive-foreground: 0 0% 98%;
-    --success: 142 72% 29%;
-    --success-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 9%;
-    --radius: 0.5rem;
+    --background: 98.5% 0.006 130;
+    --foreground: 24% 0.02 150;
+    --card: 100% 0 0;
+    --card-foreground: 24% 0.02 150;
+
+    --brand: 32% 0.07 155;
+    --brand-foreground: 97% 0.02 130;
+    --primary: 50% 0.12 150;
+    --primary-foreground: 99% 0.01 130;
+    --secondary: 94% 0.04 135;
+    --secondary-foreground: 30% 0.07 155;
+    --muted: 95.5% 0.012 130;
+    --muted-foreground: 48% 0.02 150;
+    --accent: 93% 0.05 135;
+    --accent-foreground: 30% 0.07 155;
+
+    --destructive: 56% 0.2 27;
+    --destructive-foreground: 99% 0 0;
+    --warning: 78% 0.15 75;
+    --warning-foreground: 36% 0.08 60;
+    --success: 55% 0.13 150;
+    --success-foreground: 99% 0 0;
+    --info: 52% 0.1 230;
+    --info-foreground: 99% 0 0;
+
+    --border: 90% 0.015 135;
+    --input: 88% 0.015 135;
+    --ring: 50% 0.12 150;
+
+    --sidebar: 30% 0.065 155;
+    --sidebar-foreground: 93% 0.03 130;
+    --sidebar-primary: 82% 0.13 130;
+    --sidebar-primary-foreground: 25% 0.06 155;
+    --sidebar-accent: 36% 0.07 155;
+    --sidebar-accent-foreground: 98% 0.02 130;
+    --sidebar-border: 38% 0.05 155;
+
+    --radius: 0.75rem;
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-brand;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
