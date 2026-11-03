@@ -3,34 +3,92 @@
 @tailwind utilities;
 
 @layer base {
+  /* Canais OKLCH (L C H) — consumidos no tailwind.config via oklch(var(--x) / <alpha-value>) */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 74% 42%;
-    --destructive-foreground: 0 0% 98%;
-    --success: 142 72% 29%;
-    --success-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 9%;
-    --radius: 0.5rem;
+    --background: 98.4% 0.004 145;
+    --foreground: 23% 0.015 155;
+    --card: 100% 0 0;
+    --card-foreground: 23% 0.015 155;
+
+    --brand: 35% 0.095 146;
+    --brand-foreground: 97% 0.015 140;
+    --primary: 45% 0.125 146;
+    --primary-foreground: 99% 0.005 140;
+    --secondary: 95% 0.03 146;
+    --secondary-foreground: 33% 0.09 146;
+    --muted: 96.2% 0.005 145;
+    --muted-foreground: 45% 0.015 155;
+    --accent: 95% 0.03 146;
+    --accent-foreground: 33% 0.09 146;
+
+    --destructive: 56% 0.2 27;
+    --destructive-foreground: 99% 0 0;
+    --warning: 78% 0.15 75;
+    --warning-foreground: 38% 0.09 60;
+    --success: 55% 0.13 150;
+    --success-foreground: 99% 0 0;
+    --info: 52% 0.1 230;
+    --info-foreground: 99% 0 0;
+
+    --border: 91.5% 0.008 150;
+    --input: 87% 0.01 150;
+    --ring: 45% 0.125 146;
+
+    --hero-scrim: 16% 0.03 146;
+
+    --sidebar: 28% 0.07 146;
+    --sidebar-foreground: 92% 0.02 145;
+    --sidebar-primary: 84% 0.12 140;
+    --sidebar-primary-foreground: 25% 0.06 155;
+    --sidebar-accent: 35% 0.08 146;
+    --sidebar-accent-foreground: 98% 0.01 140;
+    --sidebar-border: 37% 0.06 146;
+
+    --radius: 0.625rem;
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss03';
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply text-balance font-display text-brand;
+  }
+
+  /* Só o título principal é apertado: em tamanhos menores a Plus Jakarta cola as palavras */
+  h1 {
+    @apply tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-primary/20;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

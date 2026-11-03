@@ -1,23 +1,29 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { defaultLocale, defaultTimeZone } from '@/shared/i18n/config';
 import { Providers } from './providers';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const sans = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const display = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display' });
 
 export const metadata: Metadata = {
-  title: 'Preservio',
+  title: {
+    default: 'Preservio — Registre e acompanhe denúncias ambientais',
+    template: '%s — Preservio',
+  },
+  description:
+    'Sistema web para registro e acompanhamento de denúncias ambientais. Protótipo acadêmico de Engenharia de Software.',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const messages = await getMessages();
 
   return (
-    <html lang={defaultLocale}>
-      <body className={inter.variable}>
+    <html lang={defaultLocale} data-scroll-behavior="smooth">
+      <body className={`${sans.variable} ${display.variable}`}>
         <NextIntlClientProvider
           locale={defaultLocale}
           timeZone={defaultTimeZone}

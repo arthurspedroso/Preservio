@@ -7,3 +7,7 @@ next-env.d.ts
 .env
 .env.local
 *.log
+
+# Material de apoio local (requisitos, prints de referência, UML) e saídas do Playwright
+referencias/
+.playwright-mcp/

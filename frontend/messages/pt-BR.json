@@ -1,10 +1,713 @@
 {
   "home": {
-    "title": "Preservio"
+    "hero": {
+      "imageAlt": "Floresta preservada às margens de um rio",
+      "eyebrow": "Denúncias ambientais cidadãs",
+      "title": "Sua atitude ajuda a proteger o meio ambiente",
+      "description": "Com o Preservio você registra possíveis irregularidades ambientais, informa onde e quando aconteceram e acompanha cada etapa da análise feita pelo órgão responsável.",
+      "primaryCta": "Registrar denúncia",
+      "secondaryCta": "Entrar"
+    },
+    "steps": {
+      "title": "Como funciona",
+      "description": "Três passos simples, pensados para qualquer pessoa conseguir registrar uma ocorrência.",
+      "stepLabel": "Etapa {n}:",
+      "register": {
+        "title": "Registre a ocorrência",
+        "description": "Descreva o problema ambiental que você presenciou e escolha a categoria."
+      },
+      "details": {
+        "title": "Informe os detalhes e a localização",
+        "description": "Indique data, município, endereço e pontos de referência. Fotos e vídeos ajudam."
+      },
+      "follow": {
+        "title": "Acompanhe o andamento",
+        "description": "Consulte o status e as respostas do órgão responsável pela análise."
+      }
+    },
+    "participation": {
+      "title": "A participação cidadã faz diferença",
+      "description": "Quem vive no território costuma ser o primeiro a perceber um descarte irregular, uma queimada ou um rio poluído. Registrar a ocorrência com informações claras ajuda o órgão ambiental a entender o problema e priorizar a análise.",
+      "cta": "Criar minha conta",
+      "identified": {
+        "title": "Denúncias identificadas",
+        "description": "Cada denúncia é vinculada a uma conta, o que dá credibilidade ao relato e permite que o órgão responsável dê andamento a ele."
+      },
+      "restricted": {
+        "title": "Acesso restrito",
+        "description": "Somente você e os representantes autorizados do órgão ambiental podem ver os detalhes da sua denúncia."
+      },
+      "transparency": {
+        "title": "Transparência no andamento",
+        "description": "Cada mudança de status e cada resposta ficam registradas em um histórico que você pode consultar."
+      }
+    }
+  },
+  "auth": {
+    "loggedOut": "Você saiu da sua conta.",
+    "guard": {
+      "checking": "Verificando sua sessão…"
+    },
+    "validation": {
+      "nameRequired": "Informe seu nome completo.",
+      "nameFull": "Informe nome e sobrenome.",
+      "nameTooLong": "Use no máximo 100 caracteres.",
+      "emailRequired": "Informe seu e-mail.",
+      "emailInvalid": "Informe um e-mail válido, como nome@exemplo.com.",
+      "cpfRequired": "Informe seu CPF.",
+      "cpfInvalid": "CPF inválido. Confira os números digitados.",
+      "phoneInvalid": "Informe o telefone com DDD, como (11) 98765-4321.",
+      "passwordRequired": "Informe sua senha.",
+      "passwordWeak": "A senha não atende aos requisitos abaixo.",
+      "passwordTooLong": "Use no máximo 72 caracteres.",
+      "confirmRequired": "Confirme sua senha.",
+      "passwordMismatch": "As senhas não coincidem.",
+      "termsRequired": "É necessário aceitar a política de privacidade e os termos de uso."
+    },
+    "login": {
+      "email": "E-mail",
+      "password": "Senha",
+      "forgot": "Esqueci minha senha",
+      "forgotUnavailable": "A recuperação de senha ainda não está disponível nesta versão.",
+      "submit": "Entrar",
+      "submitting": "Entrando…",
+      "noAccount": "Ainda não tem conta?",
+      "createAccount": "Criar conta",
+      "welcome": "Bem-vindo(a), {name}!",
+      "genericError": "Não foi possível entrar agora. Tente novamente.",
+      "redirectTitle": "Entre para continuar",
+      "redirectReport": "Para registrar uma denúncia, entre na sua conta ou crie uma. Depois você volta direto ao formulário.",
+      "redirectGeneric": "Esta área é restrita a usuários conectados."
+    },
+    "register": {
+      "name": "Nome completo",
+      "email": "E-mail",
+      "cpf": "CPF",
+      "cpfHint": "Usado apenas para identificar você junto ao órgão ambiental que analisa a denúncia. Não é exibido publicamente.",
+      "phone": "Telefone",
+      "phoneHint": "Permite que o órgão entre em contato caso precise de mais informações.",
+      "password": "Senha",
+      "confirmPassword": "Confirmar senha",
+      "passwordRules": {
+        "length": "Pelo menos 8 caracteres",
+        "letter": "Uma letra",
+        "number": "Um número",
+        "met": "atendido",
+        "unmet": "não atendido"
+      },
+      "terms": "Li e aceito a política de privacidade e os termos de uso. Meus dados serão usados apenas para registrar e acompanhar denúncias, e compartilhados somente com o órgão ambiental responsável.",
+      "submit": "Criar conta",
+      "submitting": "Criando conta…",
+      "success": "Conta criada com sucesso!",
+      "genericError": "Não foi possível criar a conta. Tente novamente.",
+      "hasAccount": "Já possui uma conta?",
+      "login": "Entrar"
+    },
+    "demo": {
+      "title": "Contas de demonstração",
+      "description": "Protótipo com dados simulados. Use uma das contas abaixo para testar cada perfil.",
+      "fill": "Preencher",
+      "citizen": {
+        "label": "Cidadã — Maria Souza"
+      },
+      "admin": {
+        "label": "Órgão ambiental — administrador"
+      }
+    }
   },
   "systemStatus": {
     "title": "Status da API",
     "checking": "Verificando...",
     "unreachable": "API inacessível"
+  },
+  "nav": {
+    "mainNav": "Principal",
+    "home": "Início",
+    "guidance": "Orientações ambientais",
+    "login": "Entrar",
+    "signup": "Criar conta",
+    "myArea": "Meu painel",
+    "openMenu": "Abrir menu",
+    "skipToContent": "Pular para o conteúdo"
+  },
+  "layout": {
+    "footer": {
+      "about": "Sistema web para registro e acompanhamento de denúncias ambientais. Protótipo acadêmico de Engenharia de Software.",
+      "privacyTitle": "Privacidade",
+      "privacy": "Coletamos apenas os dados necessários para identificar o denunciante e analisar a ocorrência, em respeito à LGPD. Suas denúncias são visíveis apenas para você e para o órgão responsável.",
+      "teamTitle": "Equipe",
+      "team": ["Nathália Leite", "Arthur Pedroso", "Isadora Costa"],
+      "disclaimer": "Protótipo acadêmico com dados simulados — não substitui os canais oficiais dos órgãos ambientais."
+    },
+    "auth": {
+      "imageAlt": "Floresta preservada às margens de um rio",
+      "quote": "Sua atitude ajuda a proteger o meio ambiente."
+    },
+    "citizen": {
+      "navLabel": "Área do cidadão",
+      "nav": {
+        "dashboard": "Painel",
+        "myReports": "Minhas denúncias",
+        "assistant": "Assistente",
+        "guidance": "Orientações"
+      },
+      "newReport": "Nova denúncia",
+      "newReportShort": "Nova",
+      "groups": {
+        "reports": "Denúncias",
+        "help": "Ajuda",
+        "account": "Conta"
+      },
+      "openMenu": "Abrir menu",
+      "account": "Menu da conta",
+      "profile": "Perfil",
+      "logout": "Sair da conta"
+    },
+    "admin": {
+      "badge": "Ambiente de gestão",
+      "groups": {
+        "management": "Gestão",
+        "account": "Conta"
+      },
+      "ribbon": "Ambiente de gestão — acesso restrito a representantes do órgão ambiental",
+      "navLabel": "Área administrativa",
+      "nav": {
+        "receivedReports": "Denúncias recebidas",
+        "profile": "Perfil"
+      },
+      "openMenu": "Abrir menu",
+      "logout": "Sair da conta"
+    }
+  },
+  "ui": {
+    "formField": {
+      "optional": "opcional"
+    },
+    "passwordInput": {
+      "show": "Mostrar senha",
+      "hide": "Ocultar senha"
+    },
+    "confirmDialog": {
+      "confirm": "Confirmar",
+      "cancel": "Cancelar"
+    },
+    "sheet": {
+      "close": "Fechar menu"
+    },
+    "underConstruction": {
+      "title": "Tela em construção",
+      "description": "Esta tela faz parte de uma próxima etapa do protótipo e será disponibilizada em breve."
+    },
+    "demoNotice": {
+      "label": "Dados simulados",
+      "description": "Protótipo acadêmico: as informações exibidas são fictícias e ficam salvas apenas neste navegador."
+    },
+    "demoBanner": {
+      "text": "Protótipo acadêmico com dados simulados — as informações ficam salvas apenas neste navegador."
+    },
+    "errorState": {
+      "title": "Não foi possível carregar",
+      "description": "Ocorreu um problema ao buscar as informações. Tente novamente.",
+      "retry": "Tentar novamente"
+    }
+  },
+  "reports": {
+    "status": {
+      "received": {
+        "label": "Recebida",
+        "description": "A denúncia foi registrada e aguarda análise."
+      },
+      "in_review": {
+        "label": "Em análise",
+        "description": "Um responsável do órgão está avaliando as informações."
+      },
+      "in_progress": {
+        "label": "Em andamento",
+        "description": "Providências estão sendo tomadas."
+      },
+      "resolved": {
+        "label": "Concluída",
+        "description": "O atendimento da denúncia foi finalizado."
+      },
+      "not_upheld": {
+        "label": "Não procedente",
+        "description": "Após análise, a denúncia não foi considerada procedente."
+      }
+    },
+    "stepper": {
+      "label": "Andamento da denúncia",
+      "done": "Etapa concluída",
+      "current": "Etapa atual",
+      "pending": "Pendente",
+      "finished": "Etapa final"
+    },
+    "categories": {
+      "waste_disposal": {
+        "label": "Descarte irregular de resíduos",
+        "description": "Lixo, entulho ou resíduos descartados em local inadequado."
+      },
+      "deforestation": {
+        "label": "Desmatamento",
+        "description": "Corte ou supressão de vegetação sem autorização aparente."
+      },
+      "water_pollution": {
+        "label": "Poluição da água",
+        "description": "Esgoto, óleo ou produtos lançados em rios, lagos ou no mar."
+      },
+      "air_pollution": {
+        "label": "Poluição do ar",
+        "description": "Fumaça, odores fortes ou emissões fora do comum."
+      },
+      "fire": {
+        "label": "Queimada",
+        "description": "Fogo em vegetação ou queima de materiais a céu aberto."
+      },
+      "other": {
+        "label": "Outra ocorrência ambiental",
+        "description": "Qualquer outro problema que não se encaixe nas opções acima."
+      }
+    },
+    "new": {
+      "title": "Nova denúncia",
+      "description": "Conte o que aconteceu, quando e onde. Leva cerca de 3 minutos e você pode voltar às etapas anteriores a qualquer momento.",
+      "submitErrorTitle": "Não foi possível enviar a denúncia",
+      "submitError": "Ocorreu um erro inesperado. Seus dados continuam aqui; tente enviar novamente.",
+      "anonymous": {
+        "title": "Você está enviando uma denúncia anônima",
+        "text": "Nenhum dado pessoal será associado a ela, mas você não poderá acompanhá-la depois — anote o protocolo ao final.",
+        "login": "Prefere acompanhar? Entre na sua conta."
+      },
+      "progress": {
+        "label": "Etapas do registro",
+        "stepOf": "Etapa {current} de {total}",
+        "done": "(concluída)",
+        "current": "(etapa atual)",
+        "todo": "(pendente)"
+      },
+      "steps": {
+        "occurrence": {
+          "short": "Ocorrência",
+          "title": "O que aconteceu?",
+          "description": "Escolha o tipo de problema e descreva o que você presenciou."
+        },
+        "location": {
+          "short": "Data e local",
+          "title": "Quando e onde?",
+          "description": "A localização é obrigatória: é ela que permite ao órgão encontrar o problema."
+        },
+        "evidence": {
+          "short": "Evidências",
+          "title": "Fotos e vídeos",
+          "description": "Opcional. Imagens ajudam a entender a situação, mas não são necessárias para enviar."
+        },
+        "review": {
+          "short": "Revisão",
+          "title": "Revise antes de enviar",
+          "description": "Confira as informações. Depois de enviada, a denúncia não pode ser editada."
+        }
+      },
+      "actions": {
+        "cancel": "Cancelar",
+        "back": "Voltar",
+        "next": "Continuar",
+        "skipEvidence": "Continuar sem evidências",
+        "submit": "Enviar denúncia",
+        "submitting": "Enviando…"
+      },
+      "cancelDialog": {
+        "title": "Descartar esta denúncia?",
+        "description": "As informações preenchidas e os arquivos selecionados serão perdidos. Esta ação não pode ser desfeita.",
+        "confirm": "Descartar",
+        "keep": "Continuar preenchendo"
+      },
+      "validation": {
+        "categoryRequired": "Selecione o tipo de ocorrência.",
+        "titleMin": "Escreva um título com pelo menos 5 caracteres.",
+        "titleMax": "Use no máximo 120 caracteres.",
+        "descriptionMin": "Descreva o problema com pelo menos 20 caracteres.",
+        "descriptionMax": "Use no máximo 4000 caracteres.",
+        "dateRequired": "Informe a data da ocorrência.",
+        "dateFuture": "A data não pode estar no futuro.",
+        "dateTooOld": "Informe uma data a partir de 2000.",
+        "stateRequired": "Selecione o estado.",
+        "cityRequired": "Informe o município.",
+        "addressRequired": "Informe o endereço ou uma referência do local (mínimo de 5 caracteres).",
+        "referenceMax": "Use no máximo 500 caracteres."
+      },
+      "occurrence": {
+        "categoryLabel": "Tipo de ocorrência",
+        "categoryHint": "Serve para organizar a análise. Se não tiver certeza, escolha a opção mais próxima ou “Outra ocorrência”.",
+        "titleLabel": "Título",
+        "titleHint": "Um resumo curto que ajude a identificar a denúncia na lista.",
+        "titlePlaceholder": {
+          "waste_disposal": "Ex.: Entulho descartado às margens do córrego",
+          "deforestation": "Ex.: Corte de árvores em área de mata",
+          "water_pollution": "Ex.: Esgoto sendo despejado no rio",
+          "air_pollution": "Ex.: Fumaça escura saindo de chaminé",
+          "fire": "Ex.: Queimada em terreno baldio",
+          "other": "Ex.: Descreva o problema em poucas palavras"
+        },
+        "descriptionLabel": "Descrição",
+        "descriptionPrompt1": "O que você viu e qual o tamanho aproximado do problema?",
+        "descriptionPrompt2": "Ainda está acontecendo? É algo recorrente?",
+        "descriptionPrompt3": "Há pessoas, animais ou nascentes afetados por perto?",
+        "descriptionPlaceholder": "Descreva com suas palavras o que aconteceu…"
+      },
+      "location": {
+        "whenTitle": "Quando",
+        "dateLabel": "Data da ocorrência",
+        "dateHint": "O dia em que você presenciou o problema. Se for recorrente, informe a última vez.",
+        "quick": {
+          "today": "Hoje",
+          "yesterday": "Ontem"
+        },
+        "whereTitle": "Onde",
+        "precisionTitle": "Quanto mais preciso, melhor",
+        "precisionText": "Informe rua, número, bairro ou pontos de referência. O protótipo não usa sua localização automaticamente: o local é preenchido por você.",
+        "stateLabel": "Estado",
+        "statePlaceholder": "Selecione",
+        "cityLabel": "Município",
+        "cityPlaceholder": "Ex.: Campinas",
+        "addressLabel": "Endereço ou referência do local",
+        "addressHint": "Rua, número e bairro — ou, se não houver endereço, o nome do local.",
+        "addressPlaceholder": "Ex.: Rua das Palmeiras, 120 — Jardim Botânico",
+        "referenceLabel": "Ponto de referência",
+        "referenceHint": "Explique como chegar ou o que há por perto para facilitar a localização.",
+        "referencePlaceholder": "Ex.: Atrás do galpão azul, a uns 200 m da ponte"
+      },
+      "evidence": {
+        "safetyTitle": "Sua segurança vem primeiro",
+        "safetyText": "Registre imagens apenas se for seguro. Nunca se aproxime de fogo, de produtos químicos ou de pessoas que possam reagir.",
+        "dropTitle": "Arraste fotos ou vídeos para cá",
+        "fullTitle": "Limite de arquivos atingido",
+        "limits": "Até {max} arquivos. Fotos JPG, PNG ou WEBP com até {photoMb} MB; vídeos MP4, WEBM ou MOV com até {videoMb} MB.",
+        "choose": "Selecionar arquivos",
+        "added": "{count, plural, one {# arquivo adicionado} other {# arquivos adicionados}}",
+        "removed": "{name} removido",
+        "rejectedTitle": "Alguns arquivos não foram adicionados",
+        "reason": {
+          "type": "formato não aceito",
+          "size": "arquivo maior que o limite permitido",
+          "count": "limite de arquivos atingido"
+        },
+        "selected": "Arquivos selecionados ({count} de {max})",
+        "kind": {
+          "photo": "Foto",
+          "video": "Vídeo"
+        },
+        "remove": "Remover {name}",
+        "optionalNote": "Nenhum arquivo selecionado. Você pode continuar sem evidências."
+      },
+      "review": {
+        "occurrence": "Ocorrência",
+        "location": "Data e local",
+        "evidence": "Evidências",
+        "edit": "Editar {section}",
+        "editShort": "Editar",
+        "category": "Tipo",
+        "title": "Título",
+        "description": "Descrição",
+        "date": "Data da ocorrência",
+        "city": "Município",
+        "address": "Endereço ou referência",
+        "reference": "Ponto de referência",
+        "none": "Não informado",
+        "noEvidence": "Nenhuma evidência anexada.",
+        "privacy": "Seus dados de identificação (nome e CPF) serão compartilhados apenas com o órgão ambiental responsável pela análise. Eles não aparecem para outros cidadãos."
+      },
+      "tips": {
+        "title": "Dicas para esta etapa",
+        "occurrence": [
+          "Descreva fatos que você viu, sem acusações sem fundamento.",
+          "Informe a dimensão aproximada: um saco de lixo é diferente de um caminhão de entulho.",
+          "Se não souber a categoria exata, escolha a mais próxima — o órgão pode reclassificar."
+        ],
+        "location": [
+          "Pontos de referência ajudam quando não há número na rua.",
+          "Em áreas rurais, cite estradas, sítios ou placas próximas.",
+          "Use a data em que você presenciou o problema."
+        ],
+        "evidence": [
+          "Fotos de longe mostram o contexto; de perto, os detalhes.",
+          "Vídeos curtos costumam ser suficientes.",
+          "Evite registrar rostos de pessoas sem necessidade."
+        ],
+        "review": [
+          "Confira se o local está completo: é o dado mais importante.",
+          "Depois de enviada, a denúncia não pode ser editada por você.",
+          "Você receberá um protocolo para acompanhar o andamento."
+        ],
+        "emergencyTitle": "É uma emergência?",
+        "emergencyText": "Incêndios ativos ou riscos à vida devem ser comunicados imediatamente aos Bombeiros (193) ou à Defesa Civil (199)."
+      },
+      "submitted": {
+        "toast": "Denúncia enviada.",
+        "title": "Denúncia registrada com sucesso!",
+        "description": "Obrigado por contribuir com a preservação ambiental.",
+        "protocolLabel": "Protocolo",
+        "copy": "Copiar protocolo",
+        "copied": "Protocolo copiado.",
+        "copyFailed": "Não foi possível copiar. Anote o protocolo manualmente.",
+        "protocolHint": "Guarde este número para acompanhar sua denúncia.",
+        "protocolHintAnonymous": "Anote este número agora: como a denúncia é anônima, ele não poderá ser recuperado depois.",
+        "summary": "Resumo da ocorrência",
+        "registeredAt": "Data do registro",
+        "status": "Status inicial",
+        "nextTitle": "O que acontece agora",
+        "next": [
+          "A denúncia é encaminhada ao órgão ambiental responsável pela região.",
+          "Um representante do órgão analisa as informações e atualiza o status.",
+          "Você acompanha cada etapa e as respostas em “Minhas denúncias”."
+        ],
+        "nextAnonymousLast": "Como a denúncia é anônima, ela não aparece em nenhuma conta e o órgão não terá como contatar você.",
+        "backToDashboard": "Voltar ao painel",
+        "backToHome": "Voltar ao início",
+        "follow": "Acompanhar denúncia"
+      }
+    },
+    "progress": {
+      "label": "Etapa {step} de {total}: {name}"
+    },
+    "filters": {
+      "label": "Pesquisa e filtros",
+      "search": "Buscar",
+      "searchPlaceholder": "Título ou protocolo",
+      "status": "Status",
+      "allStatuses": "Todos os status",
+      "sort": "Ordenar por",
+      "newest": "Mais recentes primeiro",
+      "oldest": "Mais antigas primeiro",
+      "period": "Período",
+      "periodAll": "Qualquer data",
+      "period7d": "Últimos 7 dias",
+      "period30d": "Últimos 30 dias",
+      "clear": "Limpar filtros",
+      "results": "{shown} de {total} denúncias"
+    },
+    "card": {
+      "details": "Ver detalhes",
+      "updated": "Atualizada {when}",
+      "registered": "Registrada em {date}",
+      "answered": "O órgão respondeu"
+    },
+    "detail": {
+      "back": "Minhas denúncias",
+      "backToList": "Voltar para Minhas denúncias",
+      "summary": "Resumo",
+      "category": "Tipo",
+      "protocol": "Protocolo",
+      "occurredOn": "Data da ocorrência",
+      "registeredAt": "Data do registro",
+      "description": "Descrição",
+      "location": "Localização",
+      "city": "Município",
+      "address": "Endereço",
+      "reference": "Ponto de referência",
+      "none": "Não informado",
+      "evidence": "Evidências",
+      "noEvidence": "Nenhuma evidência anexada.",
+      "photo": "Foto",
+      "video": "Vídeo",
+      "timeline": "Histórico de movimentações",
+      "timelineEmpty": "Ainda não há atualizações do órgão para esta denúncia. Quando houver, elas aparecerão aqui.",
+      "readOnly": "Depois de enviada, a denúncia não pode ser editada. O andamento é atualizado pelo órgão responsável.",
+      "notFoundTitle": "Denúncia não encontrada",
+      "notFoundText": "Ela não existe ou não pertence à sua conta."
+    },
+    "timeline": {
+      "created": "Denúncia registrada",
+      "statusChanged": "Status alterado para",
+      "response": "Resposta do órgão",
+      "citizenAuthor": "Você",
+      "orgAuthor": "Órgão ambiental"
+    },
+    "dashboard": {
+      "greeting": "Olá, {name}",
+      "description": "Acompanhe suas denúncias e registre novas ocorrências.",
+      "summary": "{total, plural, one {# denúncia} other {# denúncias}} · {answered, plural, =0 {nenhuma resposta do órgão} one {# resposta do órgão} other {# respostas do órgão}}",
+      "ctaTitle": "Viu algo errado?",
+      "ctaText": "Registre uma denúncia em cerca de 3 minutos. Tenha em mãos o local, a data e, se tiver, fotos ou vídeos.",
+      "ctaButton": "Registrar denúncia",
+      "inProgress": "Em andamento",
+      "viewAll": "Ver todas",
+      "allDone": "Nenhuma denúncia em andamento no momento. Todas as suas denúncias já foram finalizadas.",
+      "emptyTitle": "Você ainda não registrou nenhuma denúncia.",
+      "emptyText": "Quando registrar uma ocorrência, ela aparecerá aqui com o status atualizado.",
+      "emptyAction": "Registrar primeira denúncia",
+      "helpTitle": "Precisa de ajuda?",
+      "assistantTitle": "Pergunte ao assistente",
+      "assistantText": "Tire dúvidas gerais sobre como registrar e acompanhar uma denúncia.",
+      "guidanceTitle": "Como fazer uma boa denúncia",
+      "guidanceText": "Dicas para que o órgão consiga localizar e analisar a ocorrência."
+    },
+    "list": {
+      "title": "Minhas denúncias",
+      "description": "Somente as denúncias registradas pela sua conta.",
+      "new": "Nova denúncia",
+      "emptyTitle": "Você ainda não registrou nenhuma denúncia.",
+      "emptyText": "Quando registrar uma ocorrência, ela aparecerá aqui com o status atualizado.",
+      "emptyAction": "Registrar primeira denúncia",
+      "noResultsTitle": "Nenhuma denúncia encontrada",
+      "noResultsText": "Ajuste a pesquisa ou o filtro de status.",
+      "clear": "Limpar filtros"
+    },
+    "admin": {
+      "title": "Painel administrativo",
+      "description": "Denúncias recebidas — os números refletem os registros existentes.",
+      "summary": "Resumo das denúncias por status",
+      "total": "Recebidas no total",
+      "listTitle": "Denúncias recebidas",
+      "tableCaption": "Denúncias recebidas",
+      "protocol": "Protocolo",
+      "titleColumn": "Título",
+      "location": "Local",
+      "receivedAt": "Recebida em",
+      "status": "Status",
+      "actions": "Ações",
+      "view": "Visualizar denúncia",
+      "filterByCard": "Filtrar por {status}",
+      "emptyTitle": "Nenhuma denúncia recebida até o momento.",
+      "emptyText": "As denúncias registradas pelos cidadãos aparecerão aqui.",
+      "noResultsTitle": "Nenhum resultado",
+      "noResultsText": "Ajuste a pesquisa ou os filtros."
+    },
+    "adminDetail": {
+      "back": "Denúncias recebidas",
+      "notFoundTitle": "Denúncia não encontrada",
+      "notFoundText": "Verifique o protocolo informado.",
+      "reporter": "Denunciante",
+      "anonymousReporter": "Denúncia anônima: o denunciante não se identificou.",
+      "reporterNote": "Dados pessoais exibidos apenas para a análise desta denúncia.",
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "noPhone": "Não informado",
+      "cpf": "CPF",
+      "revealCpf": "Exibir CPF completo",
+      "hideCpf": "Ocultar",
+      "revealTitle": "Exibir CPF do denunciante?",
+      "revealText": "Este acesso será registrado no histórico de acessos a dados pessoais desta denúncia, em conformidade com a LGPD.",
+      "revealConfirm": "Exibir CPF",
+      "revealed": "Acesso ao CPF registrado.",
+      "changeStatus": "Alterar status",
+      "newStatus": "Novo status",
+      "selectStatus": "Selecione",
+      "note": "Observação para o cidadão",
+      "noteHint": "Aparece no histórico e fica visível para o cidadão.",
+      "noteRequired": "Informe a justificativa para marcar como não procedente (mínimo de 10 caracteres).",
+      "applyStatus": "Alterar status",
+      "confirmTitle": "Alterar status da denúncia?",
+      "confirmText": "A alteração será registrada no histórico e ficará visível para o cidadão.",
+      "confirmAction": "Alterar status",
+      "statusUpdated": "Status atualizado para “{status}”.",
+      "finished": "Esta denúncia foi finalizada e o status não pode mais ser alterado.",
+      "respond": "Responder ao cidadão",
+      "respondAnonymous": "Esta denúncia é anônima: o denunciante não tem conta e não consegue ver respostas. Você ainda pode atualizar o status para o registro interno.",
+      "respondLabel": "Mensagem",
+      "respondHint": "Será exibida ao cidadão na linha do tempo da denúncia.",
+      "respondPlaceholder": "Escreva uma resposta clara e objetiva…",
+      "respondMin": "Escreva uma mensagem com pelo menos 10 caracteres.",
+      "respondSend": "Enviar resposta",
+      "sending": "Enviando…",
+      "responseSent": "Resposta enviada ao cidadão.",
+      "errorTitle": "Não foi possível concluir a ação",
+      "accessLog": "Acessos a dados pessoais",
+      "accessLogEmpty": "Nenhum acesso ao CPF registrado até o momento.",
+      "accessLogEntry": "{name} exibiu o CPF"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "description": "Dados básicos da sua conta.",
+    "adminDescription": "Dados básicos da sua conta institucional.",
+    "account": "Conta",
+    "name": "Nome",
+    "email": "E-mail",
+    "role": "Perfil",
+    "agency": "Órgão",
+    "registration": "Matrícula",
+    "citizenRole": "Cidadão",
+    "adminRole": "Administrador — órgão ambiental",
+    "privacy": "Seu CPF e telefone não são exibidos aqui. Eles ficam disponíveis apenas para o órgão ambiental responsável pela análise das suas denúncias.",
+    "adminPrivacy": "Você acessa dados pessoais de denunciantes apenas para analisar denúncias. O CPF completo só é exibido após confirmação e cada acesso fica registrado.",
+    "logout": "Sair da conta",
+    "demoTitle": "Dados de demonstração",
+    "demoText": "Restaura as contas e as denúncias de exemplo. Tudo o que foi criado neste navegador será apagado.",
+    "demoButton": "Restaurar dados de demonstração",
+    "demoConfirmTitle": "Restaurar dados de demonstração?",
+    "demoConfirmText": "As denúncias e contas criadas neste navegador serão apagadas e você será desconectado.",
+    "demoConfirm": "Restaurar"
+  },
+  "guidance": {
+    "title": "Orientações ambientais",
+    "description": "Recomendações gerais para registrar uma denúncia útil. Este conteúdo é informativo e não substitui órgãos ambientais ou profissionais especializados.",
+    "tips": {
+      "place": {
+        "title": "Seja específico no local",
+        "text": "Informe rua, número, bairro ou pontos de referência próximos. Quanto mais preciso, mais fácil localizar a ocorrência."
+      },
+      "date": {
+        "title": "Registre a data correta",
+        "text": "Indique quando você presenciou o problema. Se for recorrente, mencione isso na descrição."
+      },
+      "describe": {
+        "title": "Descreva o que viu",
+        "text": "Conte o que aconteceu, a dimensão aproximada e se ainda está ocorrendo. Evite acusações sem fundamento."
+      },
+      "evidence": {
+        "title": "Fotos e vídeos ajudam",
+        "text": "Registre imagens apenas se for seguro. Nunca se coloque em risco para obter evidências."
+      },
+      "emergency": {
+        "title": "Em emergências, ligue",
+        "text": "Incêndios ativos ou riscos à vida devem ser comunicados imediatamente ao Corpo de Bombeiros (193) ou à Defesa Civil (199)."
+      }
+    },
+    "officialTitle": "Canais e referências oficiais",
+    "opensInNewTab": "(abre em nova aba)",
+    "assistantTitle": "Assistente ambiental (demonstração)",
+    "assistantText": "Dentro da sua conta há um assistente simulado, com respostas pré-definidas, para tirar dúvidas gerais. Ele não é uma inteligência artificial.",
+    "assistantCta": "Conhecer o assistente"
+  },
+  "assistant": {
+    "title": "Assistente ambiental",
+    "description": "Tire dúvidas gerais sobre como registrar e acompanhar uma denúncia.",
+    "badge": "Demonstração simulada",
+    "disclaimerTitle": "Isto é uma demonstração",
+    "disclaimer": "O assistente responde com textos pré-definidos a partir de palavras-chave. Não é uma inteligência artificial e não substitui órgãos ambientais ou profissionais especializados. Em emergências, ligue 193 ou 199.",
+    "conversation": "Conversa com o assistente",
+    "intro": "Olá! Sou o assistente de demonstração do Preservio. Posso responder dúvidas gerais sobre como registrar uma denúncia, acompanhar o andamento e tipos de ocorrência ambiental. Escolha uma sugestão ou digite sua pergunta.",
+    "suggestionsTitle": "Sugestões de perguntas",
+    "suggestions": [
+      "Como faço uma boa denúncia?",
+      "O que fazer em caso de queimada?",
+      "Posso denunciar de forma anônima?",
+      "Como acompanho minha denúncia?",
+      "O que significa cada status?"
+    ],
+    "label": "Sua pergunta",
+    "placeholder": "Digite sua pergunta…",
+    "send": "Enviar",
+    "typing": "O assistente está digitando…",
+    "clear": "Limpar conversa",
+    "sources": "Fontes oficiais",
+    "reportCta": "Registrar denúncia sobre isso",
+    "error": "Não foi possível obter a resposta. Tente novamente.",
+    "topics": {
+      "greeting": "Olá! Sou o assistente de demonstração do Preservio. Posso responder dúvidas gerais sobre como registrar uma denúncia, acompanhar o andamento e tipos de ocorrência ambiental. O que você gostaria de saber?",
+      "goodReport": "Uma boa denúncia é específica: informe o endereço ou pontos de referência, a data em que viu o problema, descreva o que aconteceu (tamanho aproximado e se ainda está ocorrendo) e, se for seguro, anexe fotos ou vídeos. Evite acusações sem fundamento e nunca se coloque em risco para obter evidências.",
+      "emergency": "Se há risco à vida ou um incêndio ativo, não use o Preservio: ligue imediatamente para o Corpo de Bombeiros (193) ou para a Defesa Civil (199). Depois, se quiser, registre a ocorrência aqui para que o órgão ambiental acompanhe o caso.",
+      "fire": "Fogo ativo em vegetação é emergência: ligue para os Bombeiros (193) e mantenha distância. Depois que a situação estiver controlada, você pode registrar a queimada aqui, informando o local, a data e se havia responsáveis visíveis. Em geral, o uso de fogo em vegetação depende de autorização do órgão ambiental competente.",
+      "waste": "Lixo, entulho e outros resíduos descartados em locais inadequados podem ser registrados como “Descarte irregular de resíduos”. Informe o tipo de material, o tamanho aproximado do acúmulo, o endereço e se o problema é recorrente. Fotos ajudam, desde que você as tire com segurança.",
+      "deforestation": "Para registrar desmatamento, descreva a área afetada, se há máquinas ou pessoas trabalhando e pontos de referência para localizar o lugar (estradas, sítios, placas). Em geral, a supressão de vegetação exige autorização do órgão ambiental; o órgão responsável verificará essa situação.",
+      "water": "Esgoto lançado em rios, manchas de óleo ou mortandade de peixes podem ser registrados em “Poluição da água”. Informe o ponto exato, a aparência e o cheiro da água e há quanto tempo percebeu o problema. Evite o contato com a água suspeita.",
+      "air": "Fumaça intensa, poeira excessiva ou odores fortes podem ser registrados em “Poluição do ar”. Anote o horário, a frequência e a possível origem (chaminé, queima de materiais, obra) e se há pessoas incomodadas por perto.",
+      "anonymous": "O Preservio não aceita denúncias anônimas: cada denúncia é vinculada à sua conta. Isso dá credibilidade ao relato e permite que o órgão entre em contato se precisar de mais informações. Seus dados de identificação ficam restritos ao órgão ambiental responsável e não aparecem para outros cidadãos.",
+      "followUp": "Depois de enviar, você recebe um protocolo (como PRV-2026-000001). Em “Minhas denúncias” você vê o status atual, a linha do tempo e as respostas do órgão. O Preservio não envia e-mails nem SMS nesta versão, então consulte o painel de vez em quando.",
+      "statuses": "Recebida: a denúncia foi registrada e aguarda análise. Em análise: um responsável do órgão avalia as informações. Em andamento: providências estão sendo tomadas. Concluída: o atendimento foi finalizado. Não procedente: após análise, a denúncia não foi considerada procedente, e o órgão informa o motivo.",
+      "privacy": "Coletamos apenas os dados necessários: nome, e-mail, CPF e, opcionalmente, telefone. O CPF e o telefone servem para o órgão ambiental identificar e, se necessário, contatar você. Eles só aparecem para representantes autorizados do órgão, e cada acesso ao CPF completo fica registrado.",
+      "official": "Para canais oficiais, consulte a Linha Verde do IBAMA e o site do Ministério do Meio Ambiente. O Preservio é um protótipo acadêmico e não substitui os canais oficiais dos órgãos ambientais.",
+      "fallback": "Ainda não sei responder a essa pergunta: sou uma demonstração com respostas pré-definidas, não uma inteligência artificial. Tente perguntar sobre como registrar uma denúncia, queimadas, descarte de lixo, desmatamento, poluição da água ou do ar, ou como acompanhar o andamento. Para dúvidas específicas, consulte os canais oficiais dos órgãos ambientais."
+    }
   }
 }
