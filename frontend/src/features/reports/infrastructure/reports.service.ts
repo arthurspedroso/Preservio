@@ -180,6 +180,9 @@ export const reportsService = {
     const reports = getReports();
     const report = reports.find((r) => r.id === reportId);
     if (!report) throw notFound();
+    if (report.citizenId === null) {
+      throw new ApiError('Denúncias anônimas não podem receber respostas.', 409);
+    }
 
     const admin = await authService.findSummary(sub);
     const now = new Date().toISOString();
@@ -203,11 +206,14 @@ export const reportsService = {
   },
 
   // Dados do denunciante para análise: CPF sempre mascarado (minimização, RNF02)
-  async getIdentity(token: string, reportId: string): Promise<CitizenIdentity> {
+  // Denúncia anônima não tem denunciante: retorna null
+  async getIdentity(token: string, reportId: string): Promise<CitizenIdentity | null> {
     requireAdmin(token);
     await simulateLatency(300);
     const report = getReports().find((r) => r.id === reportId);
-    const citizen = report && (await authService.findSummary(report.citizenId));
+    if (!report) throw notFound();
+    if (report.citizenId === null) return null;
+    const citizen = await authService.findSummary(report.citizenId);
     if (!citizen) throw notFound();
     return {
       name: citizen.name,
@@ -223,7 +229,8 @@ export const reportsService = {
     await simulateLatency(300);
     const reports = getReports();
     const report = reports.find((r) => r.id === reportId);
-    const citizen = report && (await authService.findSummary(report.citizenId));
+    const citizen =
+      report?.citizenId != null ? await authService.findSummary(report.citizenId) : null;
     if (!report || !citizen?.cpf) throw notFound();
 
     const admin = await authService.findSummary(sub);
@@ -243,9 +250,14 @@ export const reportsService = {
     return { cpf: formatCpf(citizen.cpf) };
   },
 
-  async create(token: string, input: CreateReportInput): Promise<Report> {
-    const { sub, role } = readToken(token);
-    if (role !== 'citizen') throw new ApiError('Apenas cidadãos podem registrar denúncias.', 403);
+  // Sem token = denúncia anônima: nenhum dado do denunciante é associado ao registro
+  async create(token: string | null, input: CreateReportInput): Promise<Report> {
+    let citizenId: string | null = null;
+    if (token) {
+      const { sub, role } = readToken(token);
+      if (role !== 'citizen') throw new ApiError('Apenas cidadãos podem registrar denúncias.', 403);
+      citizenId = sub;
+    }
     assertValid(input);
 
     await simulateLatency(900);
@@ -257,7 +269,7 @@ export const reportsService = {
     const report: Report = {
       id: generateId(),
       protocol: nextProtocol(reports, now.getFullYear()),
-      citizenId: sub,
+      citizenId,
       title: input.title.trim(),
       category: input.category,
       description: input.description.trim(),

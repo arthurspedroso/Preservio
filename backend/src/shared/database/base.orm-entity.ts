@@ -1,4 +1,9 @@
-import { CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  CreateDateColumn,
+  DeleteDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 export abstract class BaseOrmEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -9,4 +14,7 @@ export abstract class BaseOrmEntity {
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt!: Date;
+
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt!: Date | null;
 }

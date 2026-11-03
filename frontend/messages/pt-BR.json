@@ -272,6 +272,11 @@
       "description": "Conte o que aconteceu, quando e onde. Leva cerca de 3 minutos e você pode voltar às etapas anteriores a qualquer momento.",
       "submitErrorTitle": "Não foi possível enviar a denúncia",
       "submitError": "Ocorreu um erro inesperado. Seus dados continuam aqui; tente enviar novamente.",
+      "anonymous": {
+        "title": "Você está enviando uma denúncia anônima",
+        "text": "Nenhum dado pessoal será associado a ela, mas você não poderá acompanhá-la depois — anote o protocolo ao final.",
+        "login": "Prefere acompanhar? Entre na sua conta."
+      },
       "progress": {
         "label": "Etapas do registro",
         "stepOf": "Etapa {current} de {total}",
@@ -444,6 +449,7 @@
         "copied": "Protocolo copiado.",
         "copyFailed": "Não foi possível copiar. Anote o protocolo manualmente.",
         "protocolHint": "Guarde este número para acompanhar sua denúncia.",
+        "protocolHintAnonymous": "Anote este número agora: como a denúncia é anônima, ele não poderá ser recuperado depois.",
         "summary": "Resumo da ocorrência",
         "registeredAt": "Data do registro",
         "status": "Status inicial",
@@ -453,7 +459,9 @@
           "Um representante do órgão analisa as informações e atualiza o status.",
           "Você acompanha cada etapa e as respostas em “Minhas denúncias”."
         ],
+        "nextAnonymousLast": "Como a denúncia é anônima, ela não aparece em nenhuma conta e o órgão não terá como contatar você.",
         "backToDashboard": "Voltar ao painel",
+        "backToHome": "Voltar ao início",
         "follow": "Acompanhar denúncia"
       }
     },
@@ -568,6 +576,7 @@
       "notFoundTitle": "Denúncia não encontrada",
       "notFoundText": "Verifique o protocolo informado.",
       "reporter": "Denunciante",
+      "anonymousReporter": "Denúncia anônima: o denunciante não se identificou.",
       "reporterNote": "Dados pessoais exibidos apenas para a análise desta denúncia.",
       "name": "Nome",
       "email": "E-mail",
@@ -593,6 +602,7 @@
       "statusUpdated": "Status atualizado para “{status}”.",
       "finished": "Esta denúncia foi finalizada e o status não pode mais ser alterado.",
       "respond": "Responder ao cidadão",
+      "respondAnonymous": "Esta denúncia é anônima: o denunciante não tem conta e não consegue ver respostas. Você ainda pode atualizar o status para o registro interno.",
       "respondLabel": "Mensagem",
       "respondHint": "Será exibida ao cidadão na linha do tempo da denúncia.",
       "respondPlaceholder": "Escreva uma resposta clara e objetiva…",

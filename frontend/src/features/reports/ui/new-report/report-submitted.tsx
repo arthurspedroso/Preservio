@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { formatDateTime } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
 import { toast } from '@/shared/ui/toaster';
-import type { Report } from '../../domain/types';
+import { isAnonymous, type Report } from '../../domain/types';
 import { categoryIcons } from '../category-icons';
 import { StatusBadge } from '../status-badge';
 
@@ -17,6 +17,7 @@ export function ReportSubmitted({ report }: { report: Report }) {
   const t = useTranslations('reports.new.submitted');
   const tc = useTranslations('reports.categories');
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const anonymous = isAnonymous(report);
   const CategoryIcon = categoryIcons[report.category];
 
   // Leva o foco (e o leitor de tela) direto para a confirmação
@@ -62,7 +63,9 @@ export function ReportSubmitted({ report }: { report: Report }) {
               <Copy aria-hidden />
             </Button>
           </div>
-          <p className="mt-1 text-xs text-muted-foreground">{t('protocolHint')}</p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {anonymous ? t('protocolHintAnonymous') : t('protocolHint')}
+          </p>
         </div>
 
         <dl className="mt-6 grid gap-4 text-left sm:grid-cols-2">
@@ -94,7 +97,9 @@ export function ReportSubmitted({ report }: { report: Report }) {
                 <span className="grid size-6 shrink-0 place-items-center rounded-full bg-secondary text-xs font-semibold text-secondary-foreground">
                   {i + 1}
                 </span>
-                <span className="leading-relaxed text-muted-foreground">{t(`next.${i}`)}</span>
+                <span className="leading-relaxed text-muted-foreground">
+                  {t(anonymous && i === NEXT_STEPS - 1 ? 'nextAnonymousLast' : `next.${i}`)}
+                </span>
               </li>
             ))}
           </ol>
@@ -102,14 +107,18 @@ export function ReportSubmitted({ report }: { report: Report }) {
 
         <div className="mt-10 flex flex-col-reverse gap-3 sm:flex-row sm:justify-center">
           <Button asChild variant="outline" size="lg">
-            <Link href="/painel">{t('backToDashboard')}</Link>
-          </Button>
-          <Button asChild size="lg">
-            <Link href={`/denuncias/${report.protocol}`}>
-              {t('follow')}
-              <ArrowRight aria-hidden />
+            <Link href={anonymous ? '/' : '/painel'}>
+              {anonymous ? t('backToHome') : t('backToDashboard')}
             </Link>
           </Button>
+          {!anonymous && (
+            <Button asChild size="lg">
+              <Link href={`/denuncias/${report.protocol}`}>
+                {t('follow')}
+                <ArrowRight aria-hidden />
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ import { toast } from '@/shared/ui/toaster';
 import { useRespond, useUpdateStatus } from '../../application/use-reports';
 import {
   ALLOWED_TRANSITIONS,
+  isAnonymous,
   isFinalStatus,
   type Report,
   type ReportStatus,
@@ -216,7 +217,11 @@ export function StatusActions({ report }: { report: Report }) {
         <ChangeStatus report={report} />
       </Panel>
       <Panel title={t('respond')}>
-        <RespondForm report={report} />
+        {isAnonymous(report) ? (
+          <Alert variant="info">{t('respondAnonymous')}</Alert>
+        ) : (
+          <RespondForm report={report} />
+        )}
       </Panel>
     </div>
   );
