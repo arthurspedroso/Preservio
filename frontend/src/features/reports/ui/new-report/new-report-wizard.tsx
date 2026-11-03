@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, ArrowRight, Send } from 'lucide-react';
@@ -8,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import { FormProvider, useForm, type FieldErrors } from 'react-hook-form';
 import { ApiError } from '@/shared/infrastructure/http-client';
 import { focusFirstInvalid } from '@/shared/lib/use-focus-first-error';
+import { useSessionStore } from '@/features/auth/application/session-store';
 import { cn } from '@/shared/lib/utils';
 import { Alert } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
@@ -46,6 +48,8 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
   const t = useTranslations('reports.new');
   const tv = useTranslations('reports.new.validation');
   const router = useRouter();
+  const loggedIn = useSessionStore((s) => Boolean(s.user));
+  const exitHref = loggedIn ? '/painel' : '/';
   const schema = useMemo(() => createReportSchema(tv), [tv]);
 
   // Um único formulário para todas as etapas: voltar não perde nada do que foi preenchido
@@ -161,7 +165,7 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
     void next();
   };
 
-  const cancel = () => (hasChanges ? setCancelOpen(true) : router.push('/painel'));
+  const cancel = () => (hasChanges ? setCancelOpen(true) : router.push(exitHref));
 
   if (submitted) return <ReportSubmitted report={submitted} />;
 
@@ -175,6 +179,15 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
   return (
     <FormProvider {...form}>
       <PageHeader title={t('title')} description={t('description')} />
+
+      {!loggedIn && (
+        <Alert variant="info" title={t('anonymous.title')} className="mb-6">
+          {t('anonymous.text')}{' '}
+          <Link href="/entrar?redirect=/denuncias/nova" className="font-medium underline">
+            {t('anonymous.login')}
+          </Link>
+        </Alert>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
         <div ref={containerRef} className="min-w-0 scroll-mt-24 space-y-5">
@@ -284,7 +297,7 @@ export function NewReportWizard({ initialCategory }: { initialCategory?: ReportC
         confirmLabel={t('cancelDialog.confirm')}
         cancelLabel={t('cancelDialog.keep')}
         destructive
-        onConfirm={() => router.push('/painel')}
+        onConfirm={() => router.push(exitHref)}
       />
     </FormProvider>
   );

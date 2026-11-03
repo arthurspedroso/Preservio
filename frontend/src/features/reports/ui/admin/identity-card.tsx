@@ -35,7 +35,9 @@ export function IdentityCard({ report }: { report: Report }) {
 
   return (
     <Panel title={t('reporter')} icon={LockKeyhole} description={t('reporterNote')}>
-      {isPending || !identity ? (
+      {!isPending && identity === null ? (
+        <p className="text-sm text-muted-foreground">{t('anonymousReporter')}</p>
+      ) : isPending || !identity ? (
         <div className="space-y-3" aria-busy="true">
           <Skeleton className="h-4 w-2/3" />
           <Skeleton className="h-4 w-full" />

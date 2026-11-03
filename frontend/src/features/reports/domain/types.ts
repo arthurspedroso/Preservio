@@ -82,7 +82,8 @@ export interface CitizenIdentity {
 export interface Report {
   id: string;
   protocol: string;
-  citizenId: string;
+  // null = denúncia anônima (enviada sem login)
+  citizenId: string | null;
   title: string;
   category: ReportCategory;
   description: string;
@@ -95,6 +96,8 @@ export interface Report {
   createdAt: string;
   updatedAt: string;
 }
+
+export const isAnonymous = (report: Report) => report.citizenId === null;
 
 export const hasOrgResponse = (report: Report) =>
   report.history.some((entry) => entry.authorRole === 'admin' && entry.message);
